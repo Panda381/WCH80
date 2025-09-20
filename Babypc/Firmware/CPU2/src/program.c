@@ -1,0 +1,2362 @@
+
+#include "../include.h"
+
+__attribute__((section(".flashslot"))) __attribute__((aligned(SLOTALIGN))) const sSlot Slots[SLOTMAX] = {
+
+// ==== Slot 1 (1001 B, free 23 B)
+
+{
+// -------------------------------------------
+// PRINT CHARSET (57 B)
+// To use: LOAD 1, RUN
+
+	// 10 REM
+	LINE(10),_REM,_NL,
+	// 20 REM PRINT CHARSET
+	LINE(20),_REM,_P,_R,_I,_N,_T,_SPC,_C,_H,_A,_R,_S,_E,_T,_NL,
+	// 30 REM
+	LINE(30),_REM,_NL,
+	// 40 FOR I=0 TO 255
+	LINE(40),_FOR,_I,_EQU,_0,_TO,_2,_5,_5,_NL,
+	// 50 PRINT CHR$(I);
+	LINE(50),_PRINT,_C,_H,_R,_DOLLAR,_LPAR,_I,_RPAR,_SEMI,_NL,
+	// 60 NEXT I
+	LINE(60),_NEXT,_I,_NL,
+	// 70 STOP
+	LINE(70),_STOP,_NL,
+
+// -------------------------------------------
+// PRECISE DIVISION (197 B)
+// To use: LOAD 1, RUN 100
+
+	// 110 REM
+	LINE(110),_REM,_NL,
+	// 120 REM PRECISE DIVISION
+	LINE(120),_REM,_P,_R,_E,_C,_I,_S,_E,_SPC,_D,_I,_V,_I,_S,_I,_O,_N,_NL,
+	// 130 REM
+	LINE(130),_REM,_NL,
+	// 140 PRINT "HOW MANY DECIMAL PLACES?"
+	LINE(140),_PRINT,_QUOT,_H,_O,_W,_SPC,_M,_A,_N,_Y,_SPC,
+		_D,_E,_C,_I,_M,_A,_L,_SPC,_P,_L,_A,_C,_E,_S,_QUERY,_QUOT,_NL,
+	// 150 INPUT D
+	LINE(150),_INPUT,_D,_NL,
+	// 160 PRINT "DIVIDEND?"
+	LINE(160),_PRINT,_QUOT,_D,_I,_V,_I,_D,_E,_N,_D,_QUERY,_QUOT,_NL,
+	// 170 INPUT R
+	LINE(170),_INPUT,_R,_NL,
+	// 180 PRINT "DIVISOR?"
+	LINE(180),_PRINT,_QUOT,_D,_I,_V,_I,_S,_O,_R,_QUERY,_QUOT,_NL,
+	// 190 INPUT Y
+	LINE(190),_INPUT,_Y,_NL,
+	// 200 LET Z=R/Y
+	LINE(200),_LET,_Z,_EQU,_R,_DIV,_Y,_NL,
+	// 210 LET R=R-Z*Y
+	LINE(210),_LET,_R,_EQU,_R,_SUB,_Z,_MUL,_Y,_NL,
+	// 220 PRINT "QUOTIENT IS ";Z;".";
+	LINE(220),_PRINT,_QUOT,_Q,_U,_O,_T,_I,_E,_N,_T,_SPC,_I,_S,_SPC,
+		_QUOT,_SEMI,_Z,_SEMI,_QUOT,_DOT,_QUOT,_SEMI,_NL,
+	// 230 FOR J=1 TO D
+	LINE(230),_FOR,_J,_EQU,_1,_TO,_D,_NL,
+	// 240 LET Z=10*R/Y
+	LINE(240),_LET,_Z,_EQU,_1,_0,_MUL,_R,_DIV,_Y,_NL,
+	// 250 LET R=10*R-Z*Y
+	LINE(250),_LET,_R,_EQU,_1,_0,_MUL,_R,_SUB,_Z,_MUL,_Y,_NL,
+	// 260 PRINT Z;
+	LINE(260),_PRINT,_Z,_SEMI,_NL,
+	// 270 NEXT J
+	LINE(270),_NEXT,_J,_NL,
+	// 280 STOP
+	LINE(280),_STOP,_NL,
+
+// -------------------------------------------
+// SQUARE ROOT (188 B)
+// To use: LOAD 1, RUN 300
+
+	// 310 REM
+	LINE(310),_REM,_NL,
+	// 320 REM SQUARE ROOT
+	LINE(320),_REM,_S,_Q,_U,_A,_R,_E,_SPC,_R,_O,_O,_T,_NL,
+	// 330 REM
+	LINE(330),_REM,_NL,
+	// 340 PRINT "ENTER THE NUMBER"
+	LINE(340),_PRINT,_QUOT,_E,_N,_T,_E,_R,_SPC,_T,_H,_E,_SPC,_N,_U,_M,_B,_E,_R,_QUOT,_NL,
+	// 350 INPUT X
+	LINE(350),_INPUT,_X,_NL,
+	// 360 LET J=0
+	LINE(360),_LET,_J,_EQU,_0,_NL,
+	// 370 LET K=J*J
+	LINE(370),_LET,_K,_EQU,_J,_MUL,_J,_NL,
+	// 380 LET D=X-K
+	LINE(380),_LET,_D,_EQU,_X,_SUB,_K,_NL,
+	// 390 IF D=0 THEN GOTO 430
+	LINE(390),_IF,_D,_EQU,_0,_THEN,_GOTO,_4,_3,_0,_NL,
+	// 400 IF D<0 THEN GOTO 450
+	LINE(400),_IF,_D,_LT,_0,_THEN,_GOTO,_4,_5,_0,_NL,
+	// 410 LET J=J+1
+	LINE(410),_LET,_J,_EQU,_J,_ADD,_1,_NL,
+	// 420 GOTO 370
+	LINE(420),_GOTO,_3,_7,_0,_NL,
+	// 430 PRINT "THE ROOT IS ";J
+	LINE(430),_PRINT,_QUOT,_T,_H,_E,_SPC,_R,_O,_O,_T,_SPC,_I,_S,_SPC,_QUOT,_SEMI,_J,_NL,
+	// 440 GOTO 460
+	LINE(440),_GOTO,_4,_6,_0,_NL,
+	// 450 PRINT "THE ROOT LIES BETWEEN ";J-1;" AND ";J
+	LINE(450),_PRINT,_QUOT,_T,_H,_E,_SPC,_R,_O,_O,_T,_SPC,_L,_I,_E,_S,_SPC,_B,_E,_T,_W,_E,_E,_N,_SPC,
+		_QUOT,_SEMI,_J,_SUB,_1,_SEMI,_QUOT,_SPC,_A,_N,_D,_SPC,_QUOT,_SEMI,_J,_NL,
+	// 460 STOP
+	LINE(460),_STOP,_NL,
+
+// -------------------------------------------
+// DIE THROWING (440 B)
+// To use: LOAD 1, RUN 500
+// "\A" means: press SHIFT and A
+
+	// 510 REM
+	LINE(510),_REM,_NL,
+	// 520 REM DIE THROWING
+	LINE(520),_REM,_D,_I,_E,_SPC,_T,_H,_R,_O,_W,_I,_N,_G,_NL,
+	// 530 REM
+	LINE(530),_REM,_NL,
+	// 540 LET A$="\A   \A"
+	LINE(540),_LET,_A,_DOLLAR,_EQU,_QUOT,_CHESS,_SPC,_SPC,_SPC,_CHESS,_QUOT,_NL,
+	// 550 LET B$="  \A"
+	LINE(550),_LET,_B,_DOLLAR,_EQU,_QUOT,_SPC,_SPC,_CHESS,_QUOT,_NL,
+	// 560 LET C$="\A"
+	LINE(560),_LET,_C,_DOLLAR,_EQU,_QUOT,_CHESS,_QUOT,_NL,
+	// 570 LET D$="    \A"
+	LINE(570),_LET,_D,_DOLLAR,_EQU,_QUOT,_SPC,_SPC,_SPC,_SPC,_CHESS,_QUOT,_NL,
+	// 580 RANDOMISE
+	LINE(580),_RANDOM,_NL,
+	// 590 LET X=RND(6)
+	LINE(590),_LET,_X,_EQU,_R,_N,_D,_LPAR,_6,_RPAR,_NL,
+	// 600 PRINT "YOUR THREW IS ";X
+	LINE(600),_PRINT,_QUOT,_Y,_O,_U,_R,_SPC,_T,_H,_R,_E,_W,_SPC,_I,_S,_SPC,_QUOT,_SEMI,_X,_NL,
+	// 610 GOTO X*60+560
+	LINE(610),_GOTO,_X,_MUL,_6,_0,_ADD,_5,_6,_0,_NL,
+	// 620 PRINT ""
+	LINE(620),_PRINT,_QUOT,_QUOT,_NL,
+	// 630 PRINT ""
+	LINE(630),_PRINT,_QUOT,_QUOT,_NL,
+	// 640 PRINT B$
+	LINE(640),_PRINT,_B,_DOLLAR,_NL,
+	// 650 PRINT ""
+	LINE(650),_PRINT,_QUOT,_QUOT,_NL,
+	// 660 PRINT ""
+	LINE(660),_PRINT,_QUOT,_QUOT,_NL,
+	// 670 GOTO 970
+	LINE(670),_GOTO,_9,_7,_0,_NL,
+	// 680 PRINT C$
+	LINE(680),_PRINT,_C,_DOLLAR,_NL,
+	// 690 PRINT ""
+	LINE(690),_PRINT,_QUOT,_QUOT,_NL,
+	// 700 PRINT ""
+	LINE(700),_PRINT,_QUOT,_QUOT,_NL,
+	// 710 PRINT ""
+	LINE(710),_PRINT,_QUOT,_QUOT,_NL,
+	// 720 PRINT D$
+	LINE(720),_PRINT,_D,_DOLLAR,_NL,
+	// 730 GOTO 970
+	LINE(730),_GOTO,_9,_7,_0,_NL,
+	// 740 PRINT D$
+	LINE(740),_PRINT,_D,_DOLLAR,_NL,
+	// 750 PRINT ""
+	LINE(750),_PRINT,_QUOT,_QUOT,_NL,
+	// 760 PRINT B$
+	LINE(760),_PRINT,_B,_DOLLAR,_NL,
+	// 770 PRINT ""
+	LINE(770),_PRINT,_QUOT,_QUOT,_NL,
+	// 780 PRINT C$
+	LINE(780),_PRINT,_C,_DOLLAR,_NL,
+	// 790 GOTO 970
+	LINE(790),_GOTO,_9,_7,_0,_NL,
+	// 800 PRINT A$
+	LINE(800),_PRINT,_A,_DOLLAR,_NL,
+	// 810 PRINT ""
+	LINE(810),_PRINT,_QUOT,_QUOT,_NL,
+	// 820 PRINT ""
+	LINE(820),_PRINT,_QUOT,_QUOT,_NL,
+	// 830 PRINT ""
+	LINE(830),_PRINT,_QUOT,_QUOT,_NL,
+	// 840 PRINT A$
+	LINE(840),_PRINT,_A,_DOLLAR,_NL,
+	// 850 GOTO 970
+	LINE(850),_GOTO,_9,_7,_0,_NL,
+	// 860 PRINT A$
+	LINE(860),_PRINT,_A,_DOLLAR,_NL,
+	// 870 PRINT ""
+	LINE(870),_PRINT,_QUOT,_QUOT,_NL,
+	// 880 PRINT B$
+	LINE(880),_PRINT,_B,_DOLLAR,_NL,
+	// 890 PRINT ""
+	LINE(890),_PRINT,_QUOT,_QUOT,_NL,
+	// 900 PRINT A$
+	LINE(900),_PRINT,_A,_DOLLAR,_NL,
+	// 910 GOTO 970
+	LINE(910),_GOTO,_9,_7,_0,_NL,
+	// 920 PRINT A$
+	LINE(920),_PRINT,_A,_DOLLAR,_NL,
+	// 930 PRINT ""
+	LINE(930),_PRINT,_QUOT,_QUOT,_NL,
+	// 940 PRINT A$
+	LINE(940),_PRINT,_A,_DOLLAR,_NL,
+	// 950 PRINT ""
+	LINE(950),_PRINT,_QUOT,_QUOT,_NL,
+	// 960 PRINT A$
+	LINE(960),_PRINT,_A,_DOLLAR,_NL,
+	// 970 PRINT "HIT NEWLINE TO THROW AGAIN"
+	LINE(970),_PRINT,_QUOT,_H,_I,_T,_SPC,_N,_E,_W,_L,_I,_N,_E,_SPC,
+		_T,_O,_SPC,_T,_H,_R,_O,_W,_SPC,_A,_G,_A,_I,_N,_QUOT,_NL,
+	// 980 PRINT "OR ANY CHAR+NEWLINE TO QUIT"
+	LINE(980),_PRINT,_QUOT,_O,_R,_SPC,_A,_N,_Y,_SPC,_C,_H,_A,_R,_ADD,_N,_E,_W,_L,_I,_N,_E,
+		_SPC,_T,_O,_SPC,_Q,_U,_I,_T,_QUOT,_NL,
+	// 990 INPUT X$
+	LINE(990),_INPUT,_X,_DOLLAR,_NL,
+	// 1000 CLS
+	LINE(1000),_CLS,_NL,
+	// 1010 WAIT(99)
+	LINE(1010),_WAIT,_LPAR,_9,_9,_RPAR,_NL,
+	// 1020 IF X$="" THEN GOTO 590
+	LINE(1020),_IF,_X,_DOLLAR,_EQU,_QUOT,_QUOT,_THEN,_GOTO,_5,_9,_0,_NL,
+	// 1030 STOP
+	LINE(1030),_STOP,_NL,
+
+// -------------------------------------------
+// SNOWFALL (117 B)
+// To use: LOAD 1, RUN 1100
+// Break with SPACE
+
+	// 1110 REM
+	LINE(1110),_REM,_NL,
+	// 1120 REM SNOWFALL
+	LINE(1120),_REM,_S,_N,_O,_W,_F,_A,_L,_L,_NL,
+	// 1130 REM
+	LINE(1130),_REM,_NL,
+	// 1140 RANDOMISE
+	LINE(1140),_RANDOM,_NL,
+	// 1150 FOR I=0 TO 735
+	LINE(1150),_FOR,_I,_EQU,_0,_TO,_7,_3,_5,_NL,
+	// 1160 POKE 767-I,PEEK(735-I)
+	LINE(1160),_POKE,_7,_6,_7,_SUB,_I,_COMMA,_P,_E,_E,_K,_LPAR,_7,_3,_5,_SUB,_I,_RPAR,_NL,
+	// 1170 NEXT I
+	LINE(1170),_NEXT,_I,_NL,
+	// 1180 FOR I=0 TO 31
+	LINE(1180),_FOR,_I,_EQU,_0,_TO,_3,_1,_NL,
+	// 1190 LET C=0
+	LINE(1190),_LET,_C,_EQU,_0,_NL,
+	// 1200 IF RND(10)=1 THEN LET C=20
+	LINE(1200),_IF,_R,_N,_D,_LPAR,_1,_0,_RPAR,_EQU,_1,_THEN,_LET,_C,_EQU,_2,_0,_NL,
+	// 1210 POKE I,C
+	LINE(1210),_POKE,_I,_COMMA,_C,_NL,
+	// 1220 NEXT I
+	LINE(1220),_NEXT,_I,_NL,
+	// 1230 GOTO 1150
+	LINE(1230),_GOTO,_1,_1,_5,_0,_NL,
+
+	// stop mark (2 B)
+	0,0
+},
+
+// ==== Slot 2 (872 B, free 152 B)
+
+{
+// -------------------------------------------
+// REACTION TIMER (153 B)
+// To use: LOAD 2, RUN
+
+	// 10 REM
+	LINE(10),_REM,_NL,
+	// 20 REM REACTION TIMER
+	LINE(20),_REM,_R,_E,_A,_C,_T,_I,_O,_N,_SPC,_T,_I,_M,_E,_R,_NL,
+	// 30 REM
+	LINE(30),_REM,_NL,
+	// 40 PRINT "PREPARE..."
+	LINE(40),_PRINT,_QUOT,_P,_R,_E,_P,_A,_R,_E,_DOT,_DOT,_DOT,_QUOT,_NL,
+	// 50 WAIT(1000+RND(4000))
+	LINE(50),_WAIT,_LPAR,_1,_0,_0,_0,_ADD,_R,_N,_D,_LPAR,_4,_0,_0,_0,_RPAR,_RPAR,_NL,
+	// 60 POKE -3,0
+	LINE(60),_POKE,_SUB,_3,_COMMA,_0,_NL,
+	// 70 PRINT "HIT NEWLINE"
+	LINE(70),_PRINT,_QUOT,_H,_I,_T,_SPC,_N,_E,_W,_L,_I,_N,_E,_QUOT,_NL,
+	// 80 INPUT C$
+	LINE(80),_INPUT,_C,_DOLLAR,_NL,
+	// 90 LET A=PEEK(-3)
+	LINE(90),_LET,_A,_EQU,_P,_E,_E,_K,_LPAR,_SUB,_3,_RPAR,_NL,
+	// 100 PRINT "YOUR REACTION TIME IS ";A/50000;" MS"
+	LINE(100),_PRINT,_QUOT,_Y,_O,_U,_R,_SPC,_R,_E,_A,_C,_T,_I,_O,_N,_SPC,_T,_I,_M,_E,_SPC,
+		_I,_S,_SPC,_QUOT,_SEMI,_A,_DIV,_5,_0,_0,_0,_0,_SEMI,_QUOT,_SPC,_M,_S,_QUOT,_NL,
+	// 110 STOP
+	LINE(110),_STOP,_NL,
+
+// -------------------------------------------
+// RND HISTOGRAM (230 B)
+// To use: LOAD 2, RUN 200
+// "\A" means: press SHIFT and A
+
+	// 210 REM
+	LINE(210),_REM,_NL,
+	// 220 REM RND HISTOGRAM
+	LINE(220),_REM,_R,_N,_D,_SPC,_H,_I,_S,_T,_O,_G,_R,_A,_M,_NL,
+	// 230 REM
+	LINE(230),_REM,_NL,
+	// 240 DIM A(20)
+	LINE(240),_DIM,_A,_LPAR,_2,_0,_RPAR,_NL,
+	// 250 RANDOMISE
+	LINE(250),_RANDOM,_NL,
+	// 260 PRINT "CALCULATING..."
+	LINE(260),_PRINT,_QUOT,_C,_A,_L,_C,_U,_L,_A,_T,_I,_N,_G,_DOT,_DOT,_DOT,_QUOT,_NL,
+	// 270 FOR K=1 TO 5000
+	LINE(270),_FOR,_K,_EQU,_1,_TO,_5,_0,_0,_0,_NL,
+	// 280 LET N=RND(20)
+	LINE(280),_LET,_N,_EQU,_R,_N,_D,_LPAR,_2,_0,_RPAR,_NL,
+	// 290 LET A(N)=A(N)+1
+	LINE(290),_LET,_A,_LPAR,_N,_RPAR,_EQU,_A,_LPAR,_N,_RPAR,_ADD,_1,_NL,
+	// 300 NEXT K
+	LINE(300),_NEXT,_K,_NL,
+	// 310 CLS
+	LINE(310),_CLS,_NL,
+	// 320 FOR K=1 TO 20
+	LINE(320),_FOR,_K,_EQU,_1,_TO,_2,_0,_NL,
+	// 330 LET A(K)=A(K)/20
+	LINE(330),_LET,_A,_LPAR,_K,_RPAR,_EQU,_A,_LPAR,_K,_RPAR,_DIV,_2,_0,_NL,
+	// 340 IF K<10 THEN PRINT " ";
+	LINE(340),_IF,_K,_LT,_1,_0,_THEN,_PRINT,_QUOT,_SPC,_QUOT,_SEMI,_NL,
+	// 350 PRINT K;" ";
+	LINE(350),_PRINT,_K,_SEMI,_QUOT,_SPC,_QUOT,_SEMI,_NL,
+	// 360 IF A(K)<1 THEN GOTO 410
+	LINE(360),_IF,_A,_LPAR,_K,_RPAR,_LT,_1,_THEN,_GOTO,_4,_1,_0,_NL,
+	// 370 IF A(K)>29 THEN LET A(K)=29
+	LINE(370),_IF,_A,_LPAR,_K,_RPAR,_GR,_2,_9,_THEN,_LET,_A,_LPAR,_K,_RPAR,_EQU,_2,_9,_NL,
+	// 380 FOR P=1 TO A(K)
+	LINE(380),_FOR,_P,_EQU,_1,_TO,_A,_LPAR,_K,_RPAR,_NL,
+	// 390 PRINT "\A";
+	LINE(390),_PRINT,_QUOT,_CHESS,_QUOT,_SEMI,_NL,
+	// 400 NEXT P
+	LINE(400),_NEXT,_P,_NL,
+	// 410 PRINT
+	LINE(410),_PRINT,_NL,
+	// 420 NEXT K
+	LINE(420),_NEXT,_K,_NL,
+	// 430 STOP
+	LINE(430),_STOP,_NL,
+
+// -------------------------------------------
+// LEAP FROGS (487 B)
+// To use: LOAD 2, RUN 500
+// The goal is to swap the frogs between the left and right sides.
+
+	// 510 REM
+	LINE(510),_REM,_NL,
+	// 520 REM LEAP FROGS
+	LINE(520),_REM,_L,_E,_A,_P,_SPC,_F,_R,_O,_G,_S,_NL,
+	// 530 REM
+	LINE(530),_REM,_NL,
+	// 540 DIM P(9)
+	LINE(540),_DIM,_P,_LPAR,_9,_RPAR,_NL,
+	// 550 LET P(5)=0
+	LINE(550),_LET,_P,_LPAR,_5,_RPAR,_EQU,_0,_NL,
+	// 560 FOR I=1 TO 4
+	LINE(560),_FOR,_I,_EQU,_1,_TO,_4,_NL,
+	// 570 LET P(I)=129
+	LINE(570),_LET,_P,_LPAR,_I,_RPAR,_EQU,_1,_2,_9,_NL,
+	// 580 LET P(I+5)=128
+	LINE(580),_LET,_P,_LPAR,_I,_ADD,_5,_RPAR,_EQU,_1,_2,_8,_NL,
+	// 590 NEXT I
+	LINE(590),_NEXT,_I,_NL,
+	// 600 LET C=0
+	LINE(600),_LET,_C,_EQU,_0,_NL,
+	// 610 CLS
+	LINE(610),_CLS,_NL,
+	// 620 FOR I=1 TO 9
+	LINE(620),_FOR,_I,_EQU,_1,_TO,_9,_NL,
+	// 630 PRINT CHR$(P(I));" ";
+	LINE(630),_PRINT,_C,_H,_R,_DOLLAR,_LPAR,_P,_LPAR,_I,_RPAR,_RPAR,_SEMI,_QUOT,_SPC,_QUOT,_SEMI,_NL,
+	// 640 NEXT I
+	LINE(640),_NEXT,_I,_NL,
+	// 650 PRINT
+	LINE(650),_PRINT,_NL,
+	// 660 FOR I=1 TO 9
+	LINE(660),_FOR,_I,_EQU,_1,_TO,_9,_NL,
+	// 670 PRINT I;" ";
+	LINE(670),_PRINT,_I,_SEMI,_QUOT,_SPC,_QUOT,_SEMI,_NL,
+	// 680 NEXT I
+	LINE(680),_NEXT,_I,_NL,
+	// 690 PRINT "ENTER MOVE"
+	LINE(690),_PRINT,_QUOT,_E,_N,_T,_E,_R,_SPC,_M,_O,_V,_E,_QUOT,_NL,
+	// 700 INPUT A
+	LINE(700),_INPUT,_A,_NL,
+	// 710 IF A=0 THEN GOTO 930
+	LINE(710),_IF,_A,_EQU,_0,_THEN,_GOTO,_9,_3,_0,_NL,
+	// 720 LET F=A/10
+	LINE(720),_LET,_F,_EQU,_A,_DIV,_1,_0,_NL,
+	// 730 IF F=0 THEN GOTO 700
+	LINE(730),_IF,_F,_EQU,_0,_THEN,_GOTO,_7,_0,_0,_NL,
+	// 740 IF P(F)=0 THEN GOTO 700
+	LINE(740),_IF,_P,_LPAR,_F,_RPAR,_EQU,_0,_THEN,_GOTO,_7,_0,_0,_NL,
+	// 750 LET T=A-10*F
+	LINE(750),_LET,_T,_EQU,_A,_SUB,_1,_0,_MUL,_F,_NL,
+	// 760 IF T=0 THEN GOTO 700
+	LINE(760),_IF,_T,_EQU,_0,_THEN,_GOTO,_7,_0,_0,_NL,
+	// 770 IF P(T)>0 THEN GOTO 700
+	LINE(770),_IF,_P,_LPAR,_T,_RPAR,_GR,_0,_THEN,_GOTO,_7,_0,_0,_NL,
+	// 780 IF ABS(T-F)>2 THEN GOTO 700
+	LINE(780),_IF,_A,_B,_S,_LPAR,_T,_SUB,_F,_RPAR,_GR,_2,_THEN,_GOTO,_7,_0,_0,_NL,
+	// 790 LET C=C+1
+	LINE(790),_LET,_C,_EQU,_C,_ADD,_1,_NL,
+	// 800 LET P(T)=P(F)
+	LINE(800),_LET,_P,_LPAR,_T,_RPAR,_EQU,_P,_LPAR,_F,_RPAR,_NL,
+	// 810 LET P(F)=0
+	LINE(810),_LET,_P,_LPAR,_F,_RPAR,_EQU,_0,_NL,
+	// 820 LET X=0
+	LINE(820),_LET,_X,_EQU,_0,_NL,
+	// 830 FOR I=1 TO 9
+	LINE(830),_FOR,_I,_EQU,_1,_TO,_9,_NL,
+	// 840 IF I=5 THEN GOTO 860
+	LINE(840),_IF,_I,_EQU,_5,_THEN,_GOTO,_8,_6,_0,_NL,
+	// 850 IF NOT P(I)=128-(I>5) THEN LET X=1
+	LINE(850),_IF,_NOT,_P,_LPAR,_I,_RPAR,_EQU,_1,_2,_8,_SUB,_LPAR,_I,_GR,_5,_RPAR,_THEN,_LET,_X,_EQU,_1,_NL,
+	// 860 NEXT I
+	LINE(860),_NEXT,_I,_NL,
+	// 870 LET X=X+P(5)
+	LINE(870),_LET,_X,_EQU,_X,_ADD,_P,_LPAR,_5,_RPAR,_NL,
+	// 880 IF X>0 THEN GOTO 610
+	LINE(880),_IF,_X,_GR,_0,_THEN,_GOTO,_6,_1,_0,_NL,
+	// 890 PRINT "YOU DID IT IN ";C;" MOVES"
+	LINE(890),_PRINT,_QUOT,_Y,_O,_U,_SPC,_D,_I,_D,_SPC,_I,_T,_SPC,_I,_N,
+		_SPC,_QUOT,_SEMI,_C,_SEMI,_QUOT,_SPC,_M,_O,_V,_E,_S,_QUOT,_NL,
+	// 900 PRINT "ANOTHER GO? (Y)"
+	LINE(900),_PRINT,_QUOT,_A,_N,_O,_T,_H,_E,_R,_SPC,_G,_O,_QUERY,_SPC,_LPAR,_Y,_RPAR,_QUOT,_NL,
+	// 910 INPUT A$
+	LINE(910),_INPUT,_A,_DOLLAR,_NL,
+	// 920 IF CODE(A$)=62 THEN GOTO 550
+	LINE(920),_IF,_C,_O,_D,_E,_LPAR,_A,_DOLLAR,_RPAR,_EQU,_6,_2,_THEN,_GOTO,_5,_5,_0,_NL,
+	// 930 PRINT "BYEBYE"
+	LINE(930),_PRINT,_QUOT,_B,_Y,_E,_B,_Y,_E,_QUOT,_NL,
+	// 940 STOP
+	LINE(940),_STOP,_NL,
+
+	// stop mark (2 B)
+	0,0
+},
+
+// ==== Slot 3 (979 B, free 45 B)
+
+{
+// -------------------------------------------
+// ENCODING MESSAGE (375 B)
+// To use: LOAD 3, RUN
+// Encode with number 1.., decode with negative number.
+// Message can contain only alphabetic characters or digits or space.
+
+	// 10 REM
+	LINE(10),_REM,_NL,
+	// 20 REM ENCODING MESSAGE
+	LINE(20),_REM,_E,_N,_C,_O,_D,_I,_N,_G,_SPC,_M,_E,_S,_S,_A,_G,_E,_NL,
+	// 30 REM
+	LINE(30),_REM,_NL,
+	// 40 PRINT "ENTER MESSAGE:"
+	LINE(40),_PRINT,_QUOT,_E,_N,_T,_E,_R,_SPC,_M,_E,_S,_S,_A,_G,_E,_COLON,_QUOT,_NL,
+	// 50 INPUT A$
+	LINE(50),_INPUT,_A,_DOLLAR,_NL,
+	// 60 PRINT A$
+	LINE(60),_PRINT,_A,_DOLLAR,_NL,
+	// 70 PRINT "ENTER >0 CODE, <0 DECODE: ";
+	LINE(70),_PRINT,_QUOT,_E,_N,_T,_E,_R,_SPC,_GR,_0,_SPC,_C,_O,_D,_E,
+		_COMMA,_SPC,_LT,_0,_SPC,_D,_E,_C,_O,_D,_E,_COLON,_SPC,_QUOT,_SEMI,_NL,
+	// 80 INPUT T
+	LINE(80),_INPUT,_T,_NL,
+	// 90 PRINT T
+	LINE(90),_PRINT,_T,_NL,
+	// 100 RANDOMISE ABS(T)
+	LINE(100),_RANDOM,_A,_B,_S,_LPAR,_T,_RPAR,_NL,
+	// 110 IF T<0 THEN PRINT "DE";
+	LINE(110),_IF,_T,_LT,_0,_THEN,_PRINT,_QUOT,_D,_E,_QUOT,_SEMI,_NL,
+	// 120 PRINT "CODED MESSAGE IS:"
+	LINE(120),_PRINT,_QUOT,_C,_O,_D,_E,_D,_SPC,_M,_E,_S,_S,_A,_G,_E,_SPC,_I,_S,_COLON,_QUOT,_NL,
+	// 130 LET R=RND(36)
+	LINE(130),_LET,_R,_EQU,_R,_N,_D,_LPAR,_3,_6,_RPAR,_NL,
+	// 140 IF T<0 THEN LET R=36-R
+	LINE(140),_IF,_T,_LT,_0,_THEN,_LET,_R,_EQU,_3,_6,_SUB,_R,_NL,
+	// 150 IF A$="" THEN GOTO 240
+	LINE(150),_IF,_A,_DOLLAR,_EQU,_QUOT,_QUOT,_THEN,_GOTO,_2,_4,_0,_NL,
+	// 160 LET B=CODE(A$)
+	LINE(160),_LET,_B,_EQU,_C,_O,_D,_E,_LPAR,_A,_DOLLAR,_RPAR,_NL,
+	// 170 LET A$=TL$(A$)
+	LINE(170),_LET,_A,_DOLLAR,_EQU,_T,_L,_DOLLAR,_LPAR,_A,_DOLLAR,_RPAR,_NL,
+	// 180 IF B=0 THEN GOTO 220
+	LINE(180),_IF,_B,_EQU,_0,_THEN,_GOTO,_2,_2,_0,_NL,
+	// 190 LET B=B+R-28
+	LINE(190),_LET,_B,_EQU,_B,_ADD,_R,_SUB,_2,_8,_NL,
+	// 200 LET B=B-36*(B/36)
+	LINE(200),_LET,_B,_EQU,_B,_SUB,_3,_6,_MUL,_LPAR,_B,_DIV,_3,_6,_RPAR,_NL,
+	// 210 LET B=B+28
+	LINE(210),_LET,_B,_EQU,_B,_ADD,_2,_8,_NL,
+	// 220 PRINT CHR$(B);
+	LINE(220),_PRINT,_C,_H,_R,_DOLLAR,_LPAR,_B,_RPAR,_SEMI,_NL,
+	// 230 GOTO 130
+	LINE(230),_GOTO,_1,_3,_0,_NL,
+	// 240 PRINT
+	LINE(240),_PRINT,_NL,
+	// 250 PRINT "ANOTHER MESSAGE? (Y)"
+	LINE(250),_PRINT,_QUOT,_A,_N,_Y,_SPC,_O,_T,_H,_E,_R,_SPC,
+		_M,_E,_S,_S,_A,_G,_E,_QUERY,_SPC,_LPAR,_Y,_RPAR,_QUOT,_NL,
+	// 260 INPUT A$
+	LINE(260),_INPUT,_A,_DOLLAR,_NL,
+	// 270 IF NOT CODE(A$)=62 THEN GOTO 300
+	LINE(270),_IF,_NOT,_C,_O,_D,_E,_LPAR,_A,_DOLLAR,_RPAR,_EQU,_6,_2,_THEN,_GOTO,_3,_0,_0,_NL,
+	// 280 CLS
+	LINE(280),_CLS,_NL,
+	// 290 GOTO 40
+	LINE(290),_GOTO,_4,_0,_NL,
+	// 300 PRINT "BYEBYE"
+	LINE(300),_PRINT,_QUOT,_B,_Y,_E,_B,_Y,_E,_QUOT,_NL,
+	// 310 STOP
+	LINE(310),_STOP,_NL,
+
+// -------------------------------------------
+// HORSE RACE (602 B)
+// To use: LOAD 3, RUN 400
+// "\letter" means: press SHIFT and letter
+
+	// 410 REM
+	LINE(400),_REM,_NL,
+	// 420 REM HORSE RACE
+	LINE(420),_REM,_H,_O,_R,_S,_E,_SPC,_R,_A,_C,_E,_NL,
+	// 430 REM
+	LINE(430),_REM,_NL,
+	// 440 DIM O(4)
+	LINE(440),_DIM,_O,_LPAR,_4,_RPAR,_NL,
+	// 450 DIM D(4)
+	LINE(450),_DIM,_D,_LPAR,_4,_RPAR,_NL,
+	// 460 LET A$="\F\T\S"
+	LINE(460),_LET,_A,_DOLLAR,_EQU,_QUOT,_0001,_CHESS1,_1001,_QUOT,_NL,
+	// 470 LET B$=" \S\G\Q"
+	LINE(470),_LET,_B,_DOLLAR,_EQU,_QUOT,_SPC,_1001,_CHESS2,_1010,_QUOT,_NL,
+	// 480 LET C$="\R  \E"
+	LINE(480),_LET,_C,_DOLLAR,_EQU,_QUOT,_0001,_SPC,_SPC,_0010,_QUOT,_NL,
+	// 490 LET M=100
+	LINE(490),_LET,_M,_EQU,_1,_0,_0,_NL,
+	// 500 GOTO 580
+	LINE(500),_GOTO,_5,_8,_0,_NL,
+	// 510 FOR C=1 TO D
+	LINE(510),_FOR,_C,_EQU,_1,_TO,_D,_NL,
+	// 520 PRINT " ";
+	LINE(520),_PRINT,_QUOT,_SPC,_QUOT,_SEMI,_NL,
+	// 530 NEXT C
+	LINE(530),_NEXT,_C,_NL,
+	// 540 RETURN
+	LINE(540),_RETURN,_NL,
+	// 550 FOR I=0 TO 4
+	LINE(550),_FOR,_I,_EQU,_0,_TO,_4,_NL,
+	// 560 LET D(I)=0
+	LINE(560),_LET,_D,_LPAR,_I,_RPAR,_EQU,_0,_NL,
+	// 570 NEXT I
+	LINE(570),_NEXT,_I,_NL,
+	// 580 PRINT "BANK$";M
+	LINE(580),_PRINT,_QUOT,_B,_A,_N,_K,_DOLLAR,_QUOT,_SEMI,_M,_NL,
+	// 590 PRINT "BET? (0=QUIT)"
+	LINE(590),_PRINT,_QUOT,_B,_E,_T,_QUERY,_SPC,_LPAR,_0,_EQU,_Q,_U,_I,_T,_RPAR,_QUOT,_NL,
+	// 600 PRINT
+	LINE(600),_PRINT,_NL,
+	// 610 PRINT "ODDS"
+	LINE(610),_PRINT,_QUOT,_O,_D,_D,_S,_QUOT,_NL,
+	// 620 FOR I=1 TO 4
+	LINE(620),_FOR,_I,_EQU,_1,_TO,_4,_NL,
+	// 630 LET O(I)=RND(9)+1
+	LINE(630),_LET,_O,_LPAR,_I,_RPAR,_EQU,_R,_N,_D,_LPAR,_9,_RPAR,_ADD,_1,_NL,
+	// 640 PRINT CHR$(I+37),O(I);"/1"
+	LINE(640),_PRINT,_C,_H,_R,_DOLLAR,_LPAR,_I,_ADD,_3,_7,_RPAR,_COMMA,
+		_O,_LPAR,_I,_RPAR,_SEMI,_QUOT,_DIV,_1,_QUOT,_NL,
+	// 650 NEXT I
+	LINE(650),_NEXT,_I,_NL,
+	// 660 INPUT B
+	LINE(660),_INPUT,_B,_NL,
+	// 670 IF B=0 THEN GOTO 990
+	LINE(670),_IF,_B,_EQU,_0,_THEN,_GOTO,_9,_9,_0,_NL,
+	// 680 PRINT "HORSE?"
+	LINE(680),_PRINT,_QUOT,_H,_O,_R,_S,_E,_QUERY,_QUOT,_NL,
+	// 690 INPUT H$
+	LINE(690),_INPUT,_H,_DOLLAR,_NL,
+	// 700 FOR L=1 TO 4
+	LINE(700),_FOR,_L,_EQU,_1,_TO,_4,_NL,
+	// 710 CLS
+	LINE(710),_CLS,_NL,
+	// 720 PRINT "LAP ";L
+	LINE(720),_PRINT,_QUOT,_L,_A,_P,_SPC,_QUOT,_SEMI,_L,_NL,
+	// 730 FOR I=1 TO 4
+	LINE(730),_FOR,_I,_EQU,_1,_TO,_4,_NL,
+	// 740 LET D(I)=D(I)+5+7/O(I)+RND(2*O(I)/3)
+	LINE(740),_LET,_D,_LPAR,_I,_RPAR,_EQU,_D,_LPAR,_I,_RPAR,_ADD,_5,_ADD,_7,_DIV,
+		_O,_LPAR,_I,_RPAR,_ADD,_R,_N,_D,_LPAR,_2,_MUL,_O,_LPAR,_I,_RPAR,_DIV,_3,_RPAR,_NL,
+	// 750 IF D(I)>D(0) THEN LET D(0)=D(I)
+	LINE(750),_IF,_D,_LPAR,_I,_RPAR,_GR,_D,_LPAR,_0,_RPAR,_THEN,
+		_LET,_D,_LPAR,_0,_RPAR,_EQU,_D,_LPAR,_I,_RPAR,_NL,
+	// 760 IF D(0)=D(I) THEN LET J=I
+	LINE(760),_IF,_D,_LPAR,_0,_RPAR,_EQU,_D,_LPAR,_I,_RPAR,_THEN,_LET,_J,_EQU,_I,_NL,
+	// 770 NEXT I
+	LINE(770),_NEXT,_I,_NL,
+	// 780 FOR I=1 TO 4
+	LINE(780),_FOR,_I,_EQU,_1,_TO,_4,_NL,
+	// 790 PRINT CHR$(I+37)
+	LINE(790),_PRINT,_C,_H,_R,_DOLLAR,_LPAR,_I,_ADD,_3,_7,_RPAR,_NL,
+	// 800 LET D=D(I)-D(0)+15
+	LINE(800),_LET,_D,_EQU,_D,_LPAR,_I,_RPAR,_SUB,_D,_LPAR,_0,_RPAR,_ADD,_1,_5,_NL,
+	// 810 GOSUB 510
+	LINE(810),_GOSUB,_5,_1,_0,_NL,
+	// 820 PRINT A$
+	LINE(820),_PRINT,_A,_DOLLAR,_NL,
+	// 830 GOSUB 510
+	LINE(830),_GOSUB,_5,_1,_0,_NL,
+	// 840 PRINT B$
+	LINE(840),_PRINT,_B,_DOLLAR,_NL,
+	// 850 GOSUB 510
+	LINE(850),_GOSUB,_5,_1,_0,_NL,
+	// 860 PRINT C$
+	LINE(860),_PRINT,_C,_DOLLAR,_NL,
+	// 870 PRINT
+	LINE(870),_PRINT,_NL,
+	// 880 NEXT I
+	LINE(880),_NEXT,_I,_NL,
+	// 890 PRINT "N/L"
+	LINE(890),_PRINT,_QUOT,_N,_DIV,_L,_QUOT,_NL,
+	// 900 INPUT D$
+	LINE(900),_INPUT,_D,_DOLLAR,_NL,
+	// 910 NEXT L
+	LINE(910),_NEXT,_L,_NL,
+	// 920 CLS
+	LINE(920),_CLS,_NL,
+	// 930 PRINT "WINNER ";CHR$(J+37)
+	LINE(930),_PRINT,_QUOT,_W,_I,_N,_N,_E,_R,_SPC,_QUOT,
+		_SEMI,_C,_H,_R,_DOLLAR,_LPAR,_J,_ADD,_3,_7,_RPAR,_NL,
+	// 940 LET S=0
+	LINE(940),_LET,_S,_EQU,_0,_NL,
+	// 950 IF CODE(H$)=J+37 THEN LET S=1
+	LINE(950),_IF,_C,_O,_D,_E,_LPAR,_H,_DOLLAR,_RPAR,_EQU,_J,_ADD,_3,_7,_THEN,_LET,_S,_EQU,_1,_NL,
+	// 960 LET M=M-B+S*B*O(J)
+	LINE(960),_LET,_M,_EQU,_M,_SUB,_B,_ADD,_S,_MUL,_B,_MUL,_O,_LPAR,_J,_RPAR,_NL,
+	// 970 IF M<1 THEN GOTO 990
+	LINE(970),_IF,_M,_LT,_1,_THEN,_GOTO,_9,_9,_0,_NL,
+	// 980 GOTO 550
+	LINE(980),_GOTO,_5,_5,_0,_NL,
+	// 990 STOP
+	LINE(990),_STOP,_NL,
+
+	// stop mark (2 B)
+	0,0
+},
+
+// ==== Slot 4 (979 B, free 45)
+
+{
+// -------------------------------------------
+// LUNAR LANDER (617 B)
+// To use: LOAD 4, RUN
+// "\letter" means: press SHIFT and letter
+// - do not add another program with DATA/READ
+
+	// 10 REM
+	LINE(10),_REM,_NL,
+	// 20 REM LUNAR LANDER
+	LINE(20),_REM,_L,_U,_N,_A,_R,_SPC,_L,_A,_N,_D,_E,_R,_NL,
+	// 30 REM
+	LINE(30),_REM,_NL,
+	// 40 DIM A(19)
+	LINE(40),_DIM,_A,_LPAR,_1,_9,_RPAR,_NL,
+	// 50 FOR I=0 TO 19
+	LINE(50),_FOR,_I,_EQU,_0,_TO,_1,_9,_NL,
+	// 60 LET A(I)=READ
+	LINE(60),_LET,_A,_LPAR,_I,_RPAR,_EQU,_R,_E,_A,_D,_NL,
+	// 70 NEXT I
+	LINE(70),_NEXT,_I,_NL,
+	// 80 LET V=-50
+	LINE(80),_LET,_V,_EQU,_SUB,_5,_0,_NL,
+	// 90 LET H=1500
+	LINE(90),_LET,_H,_EQU,_1,_5,_0,_0,_NL,
+	// 100 LET R=7000
+	LINE(100),_LET,_R,_EQU,_7,_0,_0,_0,_NL,
+	// 110 GOTO 300
+	LINE(110),_GOTO,_3,_0,_0,_NL,
+	// 120 FOR I=0 TO 3
+	LINE(120),_FOR,_I,_EQU,_0,_TO,_3,_NL,
+	// 130 FOR X=0 TO 4
+	LINE(130),_FOR,_X,_EQU,_0,_TO,_4,_NL,
+	// 140 PRINT CHR$(A(X+5*I));
+	LINE(140),_PRINT,_C,_H,_R,_DOLLAR,_LPAR,_A,_LPAR,_X,_ADD,_5,_MUL,_I,_RPAR,_RPAR,_SEMI,_NL,
+	// 150 NEXT X
+	LINE(150),_NEXT,_X,_NL,
+	// 160 PRINT
+	LINE(160),_PRINT,_NL,
+	// 170 NEXT I
+	LINE(170),_NEXT,_I,_NL,
+	// 180 RETURN
+	LINE(180),_RETURN,_NL,
+	// 190 PRINT "THRUST (0-99)?",
+	LINE(190),_PRINT,_QUOT,_T,_H,_R,_U,_S,_T,_SPC,_LPAR,_0,_SUB,_9,_9,_RPAR,_QUERY,_QUOT,_COMMA,_NL,
+	// 200 INPUT F
+	LINE(200),_INPUT,_F,_NL,
+	// 210 PRINT F
+	LINE(210),_PRINT,_F,_NL,
+	// 220 PRINT "DURATION (1-10)?",
+	LINE(220),_PRINT,_QUOT,_D,_U,_R,_A,_T,_I,_O,_N,_SPC,_LPAR,_1,_SUB,_1,_0,_RPAR,_QUERY,_QUOT,_COMMA,_NL,
+	// 230 INPUT T
+	LINE(230),_INPUT,_T,_NL,
+	// 240 CLS
+	LINE(240),_CLS,_NL,
+	// 250 IF F*T>R/10 THEN LET F=R/10*T
+	LINE(250),_IF,_F,_MUL,_T,_GR,_R,_DIV,_1,_0,_THEN,_LET,_F,_EQU,_R,_DIV,_1,_0,_MUL,_T,_NL,
+	// 260 LET R=R-F*T*10
+	LINE(260),_LET,_R,_EQU,_R,_SUB,_F,_MUL,_T,_MUL,_1,_0,_NL,
+	// 270 LET A=F-32
+	LINE(270),_LET,_A,_EQU,_F,_SUB,_3,_2,_NL,
+	// 280 LET H=A*T**2+V*T+H
+	LINE(280),_LET,_H,_EQU,_A,_MUL,_T,_PWR,_2,_ADD,_V,_MUL,_T,_ADD,_H,_NL,
+	// 290 LET V=2*A*T+V
+	LINE(290),_LET,_V,_EQU,_2,_MUL,_A,_MUL,_T,_ADD,_V,_NL,
+	// 300 LET L=H/100
+	LINE(300),_LET,_L,_EQU,_H,_DIV,_1,_0,_0,_NL,
+	// 310 IF L<0 THEN LET L=0
+	LINE(310),_IF,_L,_LT,_0,_THEN,_LET,_L,_EQU,_0,_NL,
+	// 320 IF L>12 THEN LET L=12
+	LINE(320),_IF,_L,_GR,_1,_2,_THEN,_LET,_L,_EQU,_1,_2,_NL,
+	// 330 FOR I=L TO 12
+	LINE(330),_FOR,_I,_EQU,_L,_TO,_1,_2,_NL,
+	// 340 PRINT
+	LINE(340),_PRINT,_NL,
+	// 350 NEXT I
+	LINE(350),_NEXT,_I,_NL,
+	// 360 IF L>8 THEN GOSUB 120
+	LINE(360),_IF,_L,_GR,_8,_THEN,_GOSUB,_1,_2,_0,_NL,
+	// 370 PRINT ,"VELOC","HEIGHT","FUEL"
+	LINE(370),_PRINT,_COMMA,_QUOT,_V,_E,_L,_O,_C,_QUOT,_COMMA,_QUOT,
+		_H,_E,_I,_G,_H,_T,_QUOT,_COMMA,_QUOT,_F,_U,_E,_L,_QUOT,_NL,
+	// 380 PRINT ,V,H,R
+	LINE(380),_PRINT,_COMMA,_V,_COMMA,_H,_COMMA,_R,_NL,
+	// 390 IF L<9 THEN GOSUB 120
+	LINE(390),_IF,_L,_LT,_9,_THEN,_GOSUB,_1,_2,_0,_NL,
+	// 400 IF L=0 THEN GOTO 440
+	LINE(400),_IF,_L,_EQU,_0,_THEN,_GOTO,_4,_4,_0,_NL,
+	// 410 FOR I=1 TO L-1
+	LINE(410),_FOR,_I,_EQU,_1,_TO,_L,_SUB,_1,_NL,
+	// 420 PRINT
+	LINE(420),_PRINT,_NL,
+	// 430 NEXT I
+	LINE(430),_NEXT,_I,_NL,
+	// 440 IF H<0 THEN PRINT "**CRASH**"
+	LINE(440),_IF,_H,_LT,_0,_THEN,_PRINT,_QUOT,_MUL,_MUL,_C,_R,_A,_S,_H,_MUL,_MUL,_QUOT,_NL,
+	// 450 FOR I=1 TO 16
+	LINE(450),_FOR,_I,_EQU,_1,_TO,_1,_6,_NL,
+	// 460 PRINT "\A\T";
+	LINE(460),_PRINT,_QUOT,_CHESS,_CHESS1,_QUOT,_SEMI,_NL,
+	// 470 NEXT I
+	LINE(470),_NEXT,_I,_NL,
+	// 480 IF L>0 THEN GOTO 190
+	LINE(480),_IF,_L,_GR,_0,_THEN,_GOTO,_1,_9,_0,_NL,
+	// 490 IF H<0 OR V<-99 THEN GOTO 520
+	LINE(490),_IF,_H,_LT,_0,_OR,_V,_LT,_SUB,_9,_9,_THEN,_GOTO,_5,_2,_0,_NL,
+	// 500 PRINT 100+V;" PERCENT OK"
+	LINE(500),_PRINT,_1,_0,_0,_ADD,_V,_SEMI,_QUOT,_SPC,_P,_E,_R,_C,_E,_N,_T,_SPC,_O,_K,_QUOT,_NL,
+	// 510 STOP
+	LINE(510),_STOP,_NL,
+	// 520 PRINT "TERRIBLE"
+	LINE(520),_PRINT,_QUOT,_T,_E,_R,_R,_I,_B,_L,_E,_QUOT,_NL,
+	// 530 DATA 0,0,156,0,0,0,8,3,136,0,0,2,3,130,0,134,131,3,131,135
+	LINE(530),_DATA,_0,_COMMA,_0,_COMMA,_1,_5,_6,_COMMA,_0,_COMMA,_0,_COMMA,_0,_COMMA,
+		_8,_COMMA,_3,_COMMA,_1,_3,_6,_COMMA,_0,_COMMA,_0,_COMMA,_2,_COMMA,_3,_COMMA,
+		_1,_3,_0,_COMMA,_0,_COMMA,_1,_3,_4,_COMMA,_1,_3,_1,_COMMA,_3,_COMMA,
+		_1,_3,_1,_COMMA,_1,_3,_5,_NL,
+	// 540 STOP
+	LINE(540),_STOP,_NL,
+
+// -------------------------------------------
+// MAZE GENERATOR (360 B)
+// To use: LOAD 4, RUN 600
+
+	// 610 REM
+	LINE(610),_REM,_NL,
+	// 620 REM MAZE GENERATOR
+	LINE(620),_REM,_M,_A,_Z,_E,_SPC,_G,_E,_N,_E,_R,_A,_T,_O,_R,_NL,
+	// 630 REM
+	LINE(630),_REM,_NL,
+	// 640 DIM W(32)
+	LINE(640),_DIM,_W,_LPAR,_3,_2,_RPAR,_NL,
+	// 650 PRINT
+	LINE(650),_PRINT,_NL,
+	// 660 LET W(1)=2
+	LINE(660),_LET,_W,_LPAR,_1,_RPAR,_EQU,_2,_NL,
+	// 670 LET W(32)=130
+	LINE(670),_LET,_W,_LPAR,_3,_2,_RPAR,_EQU,_1,_3,_0,_NL,
+	// 680 FOR I=2 TO 31
+	LINE(680),_FOR,_I,_EQU,_2,_TO,_3,_1,_NL,
+	// 690 LET W(I)=3
+	LINE(690),_LET,_W,_LPAR,_I,_RPAR,_EQU,_3,_NL,
+	// 700 NEXT I
+	LINE(700),_NEXT,_I,_NL,
+	// 710 LET X=RND(20)
+	LINE(710),_LET,_X,_EQU,_R,_N,_D,_LPAR,_2,_0,_RPAR,_NL,
+	// 720 LET W(X)=2
+	LINE(720),_LET,_W,_LPAR,_X,_RPAR,_EQU,_2,_NL,
+	// 730 LET W(X+6)=130
+	LINE(730),_LET,_W,_LPAR,_X,_ADD,_6,_RPAR,_EQU,_1,_3,_0,_NL,
+	// 740 FOR I=2 TO 5
+	LINE(740),_FOR,_I,_EQU,_2,_TO,_5,_NL,
+	// 750 LET W(X+I)=0
+	LINE(750),_LET,_W,_LPAR,_X,_ADD,_I,_RPAR,_EQU,_0,_NL,
+	// 760 NEXT I
+	LINE(760),_NEXT,_I,_NL,
+	// 770 FOR L=1 TO 15
+	LINE(770),_FOR,_L,_EQU,_1,_TO,_1,_5,_NL,
+	// 780 FOR I=1 TO 32
+	LINE(780),_FOR,_I,_EQU,_1,_TO,_3,_2,_NL,
+	// 790 PRINT CHR$(W(I));
+	LINE(790),_PRINT,_C,_H,_R,_DOLLAR,_LPAR,_W,_LPAR,_I,_RPAR,_RPAR,_SEMI,_NL,
+	// 800 IF I=1 OR I=32 THEN GOTO 920
+	LINE(800),_IF,_I,_EQU,_1,_OR,_I,_EQU,_3,_2,_THEN,_GOTO,_9,_2,_0,_NL,
+	// 810 IF W(I)<3 THEN GOTO 890
+	LINE(810),_IF,_W,_LPAR,_I,_RPAR,_LT,_3,_THEN,_GOTO,_8,_9,_0,_NL,
+	// 820 IF W(I)>3 THEN GOTO 870
+	LINE(820),_IF,_W,_LPAR,_I,_RPAR,_GR,_3,_THEN,_GOTO,_8,_7,_0,_NL,
+	// 830 LET X=RND(8)
+	LINE(830),_LET,_X,_EQU,_R,_N,_D,_LPAR,_8,_RPAR,_NL,
+	// 840 IF X<3 THEN LET W(I)=2
+	LINE(840),_IF,_X,_LT,_3,_THEN,_LET,_W,_LPAR,_I,_RPAR,_EQU,_2,_NL,
+	// 850 IF X=8 THEN LET W(I)=7
+	LINE(850),_IF,_X,_EQU,_8,_THEN,_LET,_W,_LPAR,_I,_RPAR,_EQU,_7,_NL,
+	// 860 GOTO 920
+	LINE(860),_GOTO,_9,_2,_0,_NL,
+	// 870 LET W(I)=1+RND(2)
+	LINE(870),_LET,_W,_LPAR,_I,_RPAR,_EQU,_1,_ADD,_R,_N,_D,_LPAR,_2,_RPAR,_NL,
+	// 880 GOTO 920
+	LINE(880),_GOTO,_9,_2,_0,_NL,
+	// 890 LET X=RND(5)
+	LINE(890),_LET,_X,_EQU,_R,_N,_D,_LPAR,_5,_RPAR,_NL,
+	// 900 LET W(I)=1+X/2
+	LINE(900),_LET,_W,_LPAR,_I,_RPAR,_EQU,_1,_ADD,_X,_DIV,_2,_NL,
+	// 910 IF X=1 THEN LET W(I)=7
+	LINE(910),_IF,_X,_EQU,_1,_THEN,_LET,_W,_LPAR,_I,_RPAR,_EQU,_7,_NL,
+	// 920 NEXT I
+	LINE(920),_NEXT,_I,_NL,
+	// 930 NEXT L
+	LINE(930),_NEXT,_L,_NL,
+	// 940 STOP
+	LINE(940),_STOP,_NL,
+
+	// stop mark (2 B)
+	0,0
+},
+
+// ==== Slot 5 (1023 B, free 1 B)
+
+{
+// -------------------------------------------
+// TIC-TAC-TOE (618 B)
+// To use: LOAD 5, RUN
+
+	// 10 REM
+	LINE(10),_REM,_NL,
+	// 20 REM TIC-TAC-TOE
+	LINE(20),_REM,_T,_I,_C,_SUB,_T,_A,_C,_SUB,_T,_O,_E,_NL,
+	// 30 REM
+	LINE(30),_REM,_NL,
+	// 40 DIM A(9)
+	LINE(40),_DIM,_A,_LPAR,_9,_RPAR,_NL,
+	// 50 FOR J=0 TO 2
+	LINE(50),_FOR,_J,_EQU,_0,_TO,_2,_NL,
+	// 60 FOR I=1 TO 3
+	LINE(60),_FOR,_I,_EQU,_1,_TO,_3,_NL,
+	// 70 LET A(I+3*J)=28+I+4*J+2*I*(J>1)
+	LINE(70),_LET,_A,_LPAR,_I,_ADD,_3,_MUL,_J,_RPAR,_EQU,_2,_8,_ADD,_I,_ADD,_4,_MUL,_J,
+		_ADD,_2,_MUL,_I,_MUL,_LPAR,_J,_GR,_1,_RPAR,_NL,
+	// 80 NEXT I
+	LINE(80),_NEXT,_I,_NL,
+	// 90 NEXT J
+	LINE(90),_NEXT,_J,_NL,
+	// 100 LET A(4)=36
+	LINE(100),_LET,_A,_LPAR,_4,_RPAR,_EQU,_3,_6,_NL,
+	// 110 LET A(5)=61
+	LINE(110),_LET,_A,_LPAR,_5,_RPAR,_EQU,_6,_1,_NL,
+	// 120 LET A(6)=32
+	LINE(120),_LET,_A,_LPAR,_6,_RPAR,_EQU,_3,_2,_NL,
+	// 130 GOTO 260
+	LINE(130),_GOTO,_2,_6,_0,_NL,
+	// 140 FOR I=1 TO 9
+	LINE(140),_FOR,_I,_EQU,_1,_TO,_9,_NL,
+	// 150 IF A(I)=M+28 THEN LET A(I)=V
+	LINE(150),_IF,_A,_LPAR,_I,_RPAR,_EQU,_M,_ADD,_2,_8,_THEN,_LET,_A,_LPAR,_I,_RPAR,_EQU,_V,_NL,
+	// 160 NEXT I
+	LINE(160),_NEXT,_I,_NL,
+	// 170 FOR I=0 TO 2
+	LINE(170),_FOR,_I,_EQU,_0,_TO,_2,_NL,
+	// 180 FOR J=1 TO 3
+	LINE(180),_FOR,_J,_EQU,_1,_TO,_3,_NL,
+	// 190 PRINT CHR$(A(J+3*I));" ";
+	LINE(190),_PRINT,_C,_H,_R,_DOLLAR,_LPAR,_A,_LPAR,_J,_ADD,_3,_MUL,
+		_I,_RPAR,_RPAR,_SEMI,_QUOT,_SPC,_QUOT,_SEMI,_NL,
+	// 200 NEXT J
+	LINE(200),_NEXT,_J,_NL,
+	// 210 PRINT
+	LINE(210),_PRINT,_NL,
+	// 220 PRINT
+	LINE(220),_PRINT,_NL,
+	// 230 NEXT I
+	LINE(230),_NEXT,_I,_NL,
+	// 240 PRINT
+	LINE(240),_PRINT,_NL,
+	// 250 RETURN
+	LINE(250),_RETURN,_NL,
+	// 260 LET A=0
+	LINE(260),_LET,_A,_EQU,_0,_NL,
+	// 270 LET E=0
+	LINE(270),_LET,_E,_EQU,_0,_NL,
+	// 280 PRINT "I WENT FIRST"
+	LINE(280),_PRINT,_QUOT,_I,_SPC,_W,_E,_N,_T,_SPC,_F,_I,_R,_S,_T,_QUOT,_NL,
+	// 290 GOSUB 170
+	LINE(290),_GOSUB,_1,_7,_0,_NL,
+	// 300 PRINT "ENTER MOVE"
+	LINE(300),_PRINT,_QUOT,_E,_N,_T,_E,_R,_SPC,_M,_O,_V,_E,_QUOT,_NL,
+	// 310 INPUT R
+	LINE(310),_INPUT,_R,_NL,
+	// 320 CLS
+	LINE(320),_CLS,_NL,
+	// 330 IF R=2*(R/2) THEN LET E=-1
+	LINE(330),_IF,_R,_EQU,_2,_MUL,_LPAR,_R,_DIV,_2,_RPAR,_THEN,_LET,_E,_EQU,_SUB,_1,_NL,
+	// 340 LET M=R
+	LINE(340),_LET,_M,_EQU,_R,_NL,
+	// 350 LET V=28
+	LINE(350),_LET,_V,_EQU,_2,_8,_NL,
+	// 360 GOSUB 140
+	LINE(360),_GOSUB,_1,_4,_0,_NL,
+	// 370 LET P=R
+	LINE(370),_LET,_P,_EQU,_R,_NL,
+	// 380 FOR T=1 TO 4
+	LINE(380),_FOR,_T,_EQU,_1,_TO,_4,_NL,
+	// 390 PRINT "I MOVED"
+	LINE(390),_PRINT,_QUOT,_I,_SPC,_M,_O,_V,_E,_D,_QUOT,_NL,
+	// 400 LET V=61
+	LINE(400),_LET,_V,_EQU,_6,_1,_NL,
+	// 410 LET A=A+1
+	LINE(410),_LET,_A,_EQU,_A,_ADD,_1,_NL,
+	// 420 IF T=1 OR R=P+4 OR R=P-4 THEN GOTO 480
+	LINE(420),_IF,_T,_EQU,_1,_OR,_R,_EQU,_P,_ADD,_4,_OR,_R,_EQU,_P,_SUB,_4,_THEN,_GOTO,_4,_8,_0,_NL,
+	// 430 LET P=P+4
+	LINE(430),_LET,_P,_EQU,_P,_ADD,_4,_NL,
+	// 440 IF P>8 THEN LET P=P-8
+	LINE(440),_IF,_P,_GR,_8,_THEN,_LET,_P,_EQU,_P,_SUB,_8,_NL,
+	// 450 LET M=P
+	LINE(450),_LET,_M,_EQU,_P,_NL,
+	// 460 GOSUB 140
+	LINE(460),_GOSUB,_1,_4,_0,_NL,
+	// 470 GOTO 650
+	LINE(470),_GOTO,_6,_5,_0,_NL,
+	// 480 IF A=3 AND E THEN LET A=7
+	LINE(480),_IF,_A,_EQU,_3,_AND,_E,_THEN,_LET,_A,_EQU,_7,_NL,
+	// 490 IF A=4 THEN LET A=6
+	LINE(490),_IF,_A,_EQU,_4,_THEN,_LET,_A,_EQU,_6,_NL,
+	// 500 LET P=P+A
+	LINE(500),_LET,_P,_EQU,_P,_ADD,_A,_NL,
+	// 510 IF P>8 THEN LET P=P-8
+	LINE(510),_IF,_P,_GR,_8,_THEN,_LET,_P,_EQU,_P,_SUB,_8,_NL,
+	// 520 LET M=P
+	LINE(520),_LET,_M,_EQU,_P,_NL,
+	// 530 GOSUB 140
+	LINE(530),_GOSUB,_1,_4,_0,_NL,
+	// 540 IF A=7 THEN GOTO 650
+	LINE(540),_IF,_A,_EQU,_7,_THEN,_GOTO,_6,_5,_0,_NL,
+	// 550 IF T=4 THEN GOTO 630
+	LINE(550),_IF,_T,_EQU,_4,_THEN,_GOTO,_6,_3,_0,_NL,
+	// 560 PRINT "YOUR MOVE"
+	LINE(560),_PRINT,_QUOT,_Y,_O,_U,_R,_SPC,_M,_O,_V,_E,_QUOT,_NL,
+	// 570 INPUT R
+	LINE(570),_INPUT,_R,_NL,
+	// 580 CLS
+	LINE(580),_CLS,_NL,
+	// 590 LET M=R
+	LINE(590),_LET,_M,_EQU,_R,_NL,
+	// 600 LET V=28
+	LINE(600),_LET,_V,_EQU,_2,_8,_NL,
+	// 610 GOSUB 140
+	LINE(610),_GOSUB,_1,_4,_0,_NL,
+	// 620 NEXT T
+	LINE(620),_NEXT,_T,_NL,
+	// 630 PRINT "DRAW"
+	LINE(630),_PRINT,_QUOT,_D,_R,_A,_W,_QUOT,_NL,
+	// 640 STOP
+	LINE(640),_STOP,_NL,
+	// 650 PRINT "I WON"
+	LINE(650),_PRINT,_QUOT,_I,_SPC,_W,_O,_N,_QUOT,_NL,
+	// 660 STOP
+	LINE(660),_STOP,_NL,
+
+
+// -------------------------------------------
+// DRAWING (403 B)
+// To use: LOAD 5, RUN 700
+//  How to prepare your own image: Create a black and white image with
+//  a resolution of 32x24 pixels in a graphics editor. Save it to
+//  a Windows BMP file in "1-bit bitmap" format, with switch "Flip row order".
+//  Display the image in a HEX editor - you can use the F3 function in
+//  FAR Manager, switching to HEX mode. Read the bytes in HEX format
+//  sequentially, starting from offset 0x003E, and write them 4 bytes
+//  at a time to the Windows calculator in HEX format. Switch the mode to
+//  decimal format to obtain the number in decimal format for DATA. For
+//  example, rewrite the sequence 0F 80 03 E0 to the calculator as the HEX
+//  number 0F8003E0. Switch to decimal format to obtain the number 260047840.
+
+	// 700 REM
+	LINE(700),_REM,_NL,
+	// 710 REM DRAWING
+	LINE(710),_REM,_D,_R,_A,_W,_I,_N,_G,_NL,
+	// 720 REM
+	LINE(720),_REM,_NL,
+	// 730 FOR I=0 TO 23
+	LINE(730),_FOR,_I,_EQU,_0,_TO,_2,_3,_NL,
+	// 740 LET C=READ
+	LINE(740),_LET,_C,_EQU,_R,_E,_A,_D,_NL,
+	// 750 IF C<0 THEN PRINT CHR$(128);
+	LINE(750),_IF,_C,_LT,_0,_THEN,_PRINT,_C,_H,_R,_DOLLAR,_LPAR,_1,_2,_8,_RPAR,_SEMI,_NL,
+	// 760 IF NOT C<0 THEN PRINT " ";
+	LINE(760),_IF,_NOT,_C,_LT,_0,_THEN,_PRINT,_QUOT,_SPC,_QUOT,_SEMI,_NL,
+	// 770 LET M=2**30
+	LINE(770),_LET,_M,_EQU,_2,_PWR,_3,_0,_NL,
+	// 780 FOR J=0 TO 30
+	LINE(780),_FOR,_J,_EQU,_0,_TO,_3,_0,_NL,
+	// 790 IF C AND M THEN PRINT CHR$(128);
+	LINE(790),_IF,_C,_AND,_M,_THEN,_PRINT,_C,_H,_R,_DOLLAR,_LPAR,_1,_2,_8,_RPAR,_SEMI,_NL,
+	// 800 IF (C AND M)=0 THEN PRINT " ";
+	LINE(800),_IF,_LPAR,_C,_AND,_M,_RPAR,_EQU,_0,_THEN,_PRINT,_QUOT,_SPC,_QUOT,_SEMI,_NL,
+	// 810 LET M=M/2
+	LINE(810),_LET,_M,_EQU,_M,_DIV,_2,_NL,
+	// 820 NEXT J
+	LINE(820),_NEXT,_J,_NL,
+	// 830 PRINT
+	LINE(830),_PRINT,_NL,
+	// 840 NEXT I
+	LINE(840),_NEXT,_I,_NL,
+	// 850 IF INKEY$="" THEN GOTO 850
+	LINE(850),_IF,_I,_N,_K,_E,_Y,_DOLLAR,_EQU,_QUOT,_QUOT,_THEN,_GOTO,_8,_5,_0,_NL,
+	// 860 STOP
+	LINE(860),_STOP,_NL,
+	// 870 DATA 0, 260047840, 533719024, 536362992, 532678640, 520094192, 503316720, 201326688
+	LINE(870),_DATA,_0,_COMMA,_2,_6,_0,_0,_4,_7,_8,_4,_0,_COMMA,
+		_5,_3,_3,_7,_1,_9,_0,_2,_4,_COMMA,_5,_3,_6,_3,_6,_2,_9,_9,_2,_COMMA,
+		_5,_3,_2,_6,_7,_8,_6,_4,_0,_COMMA,_5,_2,_0,_0,_9,_4,_1,_9,_2,_COMMA,
+		_5,_0,_3,_3,_1,_6,_7,_2,_0,_COMMA,_2,_0,_1,_3,_2,_6,_6,_8,_8,_NL,
+	// 880 DATA 410000432, 284704272, 837578520, 569143048, 569143048, 553369096, 537100296, 537100296
+	LINE(880),_DATA,_4,_1,_0,_0,_0,_0,_4,_3,_2,_COMMA,_2,_8,_4,_7,_0,_4,_2,_7,_2,_COMMA,
+		_8,_3,_7,_5,_7,_8,_5,_2,_0,_COMMA,_5,_6,_9,_1,_4,_3,_0,_4,_8,_COMMA,
+		_5,_6,_9,_1,_4,_3,_0,_4,_8,_COMMA,_5,_5,_3,_3,_6,_9,_0,_9,_6,_COMMA,
+		_5,_3,_7,_1,_0,_0,_2,_9,_6,_COMMA,_5,_3,_7,_1,_0,_0,_2,_9,_6,_NL,
+	// 890 DATA 805904408, 269033488, 403095600, 201326688, 100663744, 62916352, 8387584, 0
+	LINE(890),_DATA,_8,_0,_5,_9,_0,_4,_4,_0,_8,_COMMA,_2,_6,_9,_0,_3,_3,_4,_8,_8,_COMMA,
+		_4,_0,_3,_0,_9,_5,_6,_0,_0,_COMMA,_2,_0,_1,_3,_2,_6,_6,_8,_8,_COMMA,
+		_1,_0,_0,_6,_6,_3,_7,_4,_4,_COMMA,_6,_2,_9,_1,_6,_3,_5,_2,_COMMA,
+		_8,_3,_8,_7,_5,_8,_4,_COMMA,_0,_NL,
+
+	// stop mark (2 B)
+	0,0
+},
+
+// ==== Slot 6 (901 B, free 123 B)
+
+{
+
+// -------------------------------------------
+// MASTERMIND (442 B)
+// To use: LOAD 6, RUN
+
+	// 10 REM
+	LINE(10),_REM,_NL,
+	// 20 REM MASTERMIND
+	LINE(20),_REM,_M,_A,_S,_T,_E,_R,_M,_I,_N,_D,_NL,
+	// 30 REM
+	LINE(30),_REM,_NL,
+	// 40 PRINT "ENTER NUMBER OF DIGITS (3-7)"
+	LINE(40),_PRINT,_QUOT,_E,_N,_T,_E,_R,_SPC,_N,_U,_M,_B,_E,_R,_SPC,
+		_O,_F,_SPC,_D,_I,_G,_I,_T,_D,_SPC,_LPAR,_3,_SUB,_7,_RPAR,_QUOT,_NL,
+	// 50 INPUT N
+	LINE(50),_INPUT,_N,_NL,
+	// 60 LET N=N-1
+	LINE(60),_LET,_N,_EQU,_N,_SUB,_1,_NL,
+	// 70 DIM A(N)
+	LINE(70),_DIM,_A,_LPAR,_N,_RPAR,_NL,
+	// 80 FOR I=0 TO N
+	LINE(80),_FOR,_I,_EQU,_0,_TO,_N,_NL,
+	// 90 LET X=RND(10)-1
+	LINE(90),_LET,_X,_EQU,_R,_N,_D,_LPAR,_1,_0,_RPAR,_SUB,_1,_NL,
+	// 100 FOR J=0 TO I
+	LINE(100),_FOR,_J,_EQU,_0,_TO,_I,_NL,
+	// 110 IF X=A(J) THEN GOTO 90
+	LINE(110),_IF,_X,_EQU,_A,_LPAR,_J,_RPAR,_THEN,_GOTO,_9,_0,_NL,
+	// 120 NEXT J
+	LINE(120),_NEXT,_J,_NL,
+	// 130 LET A(I)=X
+	LINE(130),_LET,_A,_LPAR,_I,_RPAR,_EQU,_X,_NL,
+	// 140 NEXT I
+	LINE(140),_NEXT,_I,_NL,
+	// 150 LET G=0
+	LINE(150),_LET,_G,_EQU,_0,_NL,
+	// 160 GOTO 360
+	LINE(160),_GOTO,_3,_6,_0,_NL,
+	// 170 INPUT B$
+	LINE(170),_INPUT,_B,_DOLLAR,_NL,
+	// 180 IF B$="" THEN STOP
+	LINE(180),_IF,_B,_DOLLAR,_EQU,_QUOT,_QUOT,_THEN,_STOP,_NL,
+	// 190 CLS
+	LINE(190),_CLS,_NL,
+	// 200 PRINT B$
+	LINE(200),_PRINT,_B,_DOLLAR,_NL,
+	// 210 LET R=0
+	LINE(210),_LET,_R,_EQU,_0,_NL,
+	// 220 LET C=0
+	LINE(220),_LET,_C,_EQU,_0,_NL,
+	// 230 LET G=G+1
+	LINE(230),_LET,_G,_EQU,_G,_ADD,_1,_NL,
+	// 240 FOR I=0 TO N
+	LINE(240),_FOR,_I,_EQU,_0,_TO,_N,_NL,
+	// 250 LET X=CODE(B$)-28
+	LINE(250),_LET,_X,_EQU,_C,_O,_D,_E,_LPAR,_B,_DOLLAR,_RPAR,_SUB,_2,_8,_NL,
+	// 260 IF X=A(I) THEN LET C=C+1
+	LINE(260),_IF,_X,_EQU,_A,_LPAR,_I,_RPAR,_THEN,_LET,_C,_EQU,_C,_ADD,_1,_NL,
+	// 270 FOR J=0 TO N
+	LINE(270),_FOR,_J,_EQU,_0,_TO,_N,_NL,
+	// 280 IF X=A(J) THEN LET R=R+1
+	LINE(280),_IF,_X,_EQU,_A,_LPAR,_J,_RPAR,_THEN,_LET,_R,_EQU,_R,_ADD,_1,_NL,
+	// 290 NEXT J
+	LINE(290),_NEXT,_J,_NL,
+	// 300 LET B$=TL$(B$)
+	LINE(300),_LET,_B,_DOLLAR,_EQU,_T,_L,_DOLLAR,_LPAR,_B,_DOLLAR,_RPAR,_NL,
+	// 310 NEXT I
+	LINE(310),_NEXT,_I,_NL,
+	// 320 IF C=N+1 THEN GOTO 380
+	LINE(320),_IF,_C,_EQU,_N,_ADD,_1,_THEN,_GOTO,_3,_8,_0,_NL,
+	// 330 PRINT "NUMBERS RIGHT=";R
+	LINE(330),_PRINT,_QUOT,_N,_U,_M,_B,_E,_R,_S,_SPC,_R,_I,_G,_H,_T,_EQU,_QUOT,_SEMI,_R,_NL,
+	// 340 PRINT "CORRECT POSITIONS=";C
+	LINE(340),_PRINT,_QUOT,_C,_O,_R,_R,_E,_C,_T,_SPC,_P,_O,_S,_I,_T,_I,_O,_N,_S,_EQU,_QUOT,_SEMI,_C,_NL,
+	// 350 PRINT
+	LINE(350),_PRINT,_NL,
+	// 360 PRINT "ENTER ";N+1;"-DIGIT GUESS"
+	LINE(360),_PRINT,_QUOT,_E,_N,_T,_E,_R,_SPC,_QUOT,_SEMI,_N,_ADD,_1,_SEMI,
+		_QUOT,_SUB,_D,_I,_G,_I,_T,_SPC,_G,_U,_E,_S,_S,_QUOT,_NL,
+	// 370 GOTO 170
+	LINE(370),_GOTO,_1,_7,_0,_NL,
+	// 380 PRINT "YOU DID IT IN ";G;" GUESSES"
+	LINE(380),_PRINT,_QUOT,_Y,_O,_U,_SPC,_D,_I,_D,_SPC,_I,_T,_SPC,_I,_N,_SPC,_QUOT,
+		_SEMI,_G,_SEMI,_QUOT,_SPC,_G,_U,_E,_S,_S,_E,_S,_QUOT,_NL,
+	// 390 STOP
+	LINE(390),_STOP,_NL,
+
+// -------------------------------------------
+// DAY OF WEEK (457 B)
+// To use: LOAD 6, RUN 500
+
+	// 500 REM
+	LINE(500),_REM,_NL,
+	// 510 REM DAY OF WEEK
+	LINE(510),_REM,_D,_A,_Y,_SPC,_O,_F,_SPC,_W,_E,_E,_K,_NL,
+	// 520 REM
+	LINE(520),_REM,_NL,
+	// 530 LET D$="   SUNMONTUEWEDTHUFRISAT"
+	LINE(530),_LET,_D,_DOLLAR,_EQU,_QUOT,_SPC,_SPC,_SPC,_S,_U,_N,_M,_O,_N,_T,_U,_E,
+		_W,_E,_D,_T,_H,_U,_F,_R,_I,_S,_A,_T,_QUOT,_NL,
+	// 540 PRINT "ENTER DATE:"
+	LINE(540),_PRINT,_QUOT,_E,_N,_T,_E,_R,_SPC,_D,_A,_T,_E,_COLON,_QUOT,_NL,
+	// 550 PRINT "DAY",
+	LINE(550),_PRINT,_QUOT,_D,_A,_Y,_QUOT,_COMMA,_NL,
+	// 560 INPUT D
+	LINE(560),_INPUT,_D,_NL,
+	// 570 IF D<1 OR D>31 THEN GOTO 560
+	LINE(570),_IF,_D,_LT,_1,_OR,_D,_GR,_3,_1,_THEN,_GOTO,_5,_6,_0,_NL,
+	// 580 PRINT D
+	LINE(580),_PRINT,_D,_NL,
+	// 590 PRINT "MONTH",
+	LINE(590),_PRINT,_QUOT,_M,_O,_N,_T,_H,_QUOT,_COMMA,_NL,
+	// 600 INPUT M
+	LINE(600),_INPUT,_M,_NL,
+	// 610 IF M<1 OR M>12 THEN GOTO 600
+	LINE(610),_IF,_M,_LT,_1,_OR,_M,_GR,_1,_2,_THEN,_GOTO,_6,_0,_0,_NL,
+	// 620 PRINT M
+	LINE(620),_PRINT,_M,_NL,
+	// 630 PRINT "YEAR",
+	LINE(630),_PRINT,_QUOT,_Y,_E,_A,_R,_QUOT,_COMMA,_NL,
+	// 640 INPUT Y
+	LINE(640),_INPUT,_Y,_NL,
+	// 650 IF Y<1700 THEN GOTO 640
+	LINE(650),_IF,_Y,_LT,_1,_7,_0,_0,_THEN,_GOTO,_6,_4,_0,_NL,
+	// 660 PRINT Y
+	LINE(660),_PRINT,_Y,_NL,
+	// 670 LET K=0
+	LINE(670),_LET,_K,_EQU,_0,_NL,
+	// 680 IF M=1 OR M=2 THEN LET K=1
+	LINE(680),_IF,_M,_EQU,_1,_OR,_M,_EQU,_2,_THEN,_LET,_K,_EQU,_1,_NL,
+	// 690 LET L=Y-K
+	LINE(690),_LET,_L,_EQU,_Y,_SUB,_K,_NL,
+	// 700 LET O=M+12*K
+	LINE(700),_LET,_O,_EQU,_M,_ADD,_1,_2,_MUL,_K,_NL,
+	// 710 LET P=L/100
+	LINE(710),_LET,_P,_EQU,_L,_DIV,_1,_0,_0,_NL,
+	// 720 LET Z=(13*(O+1))/5+(5*L)/4-P+P/4+D-1
+	LINE(720),_LET,_Z,_EQU,_LPAR,_1,_3,_MUL,_LPAR,_O,_ADD,_1,_RPAR,_RPAR,_DIV,_5,_ADD,
+		_LPAR,_5,_MUL,_L,_RPAR,_DIV,_4,_SUB,_P,_ADD,_P,_DIV,_4,_ADD,_D,_SUB,_1,_NL,
+	// 730 LET Z=Z-7*(Z/7)+1
+	LINE(730),_LET,_Z,_EQU,_Z,_SUB,_7,_MUL,_LPAR,_Z,_DIV,_7,_RPAR,_ADD,_1,_NL,
+	// 740 FOR I=1 TO Z*3
+	LINE(740),_FOR,_I,_EQU,_1,_TO,_Z,_MUL,_3,_NL,
+	// 750 LET D$=TL$(D$)
+	LINE(750),_LET,_D,_DOLLAR,_EQU,_T,_L,_DOLLAR,_LPAR,_D,_DOLLAR,_RPAR,_NL,
+	// 760 NEXT I
+	LINE(760),_NEXT,_I,_NL,
+	// 770 PRINT "IT IS ";CHR$(CODE(D$));
+	LINE(770),_PRINT,_QUOT,_I,_T,_SPC,_I,_S,_SPC,_QUOT,_SEMI,
+		_C,_H,_R,_DOLLAR,_LPAR,_C,_O,_D,_E,_LPAR,_D,_DOLLAR,_RPAR,_RPAR,_SEMI,_NL,
+	// 780 LET D$=TL$(D$)
+	LINE(780),_LET,_D,_DOLLAR,_EQU,_T,_L,_DOLLAR,_LPAR,_D,_DOLLAR,_RPAR,_NL,
+	// 790 PRINT CHR$(CODE(D$));CHR$(CODE(TL$(D$)))
+	LINE(790),_PRINT,_C,_H,_R,_DOLLAR,_LPAR,_C,_O,_D,_E,_LPAR,_D,_DOLLAR,_RPAR,_RPAR,_SEMI,
+		_C,_H,_R,_DOLLAR,_LPAR,_C,_O,_D,_E,_LPAR,_T,_L,_DOLLAR,_LPAR,_D,_DOLLAR,_RPAR,_RPAR,_RPAR,_NL,
+	// 800 PRINT
+	LINE(800),_PRINT,_NL,
+	// 810 PRINT "AGAIN? (Y)"
+	LINE(810),_PRINT,_QUOT,_A,_G,_A,_I,_N,_QUERY,_SPC,_LPAR,_Y,_RPAR,_QUOT,_NL,
+	// 820 INPUT A$
+	LINE(820),_INPUT,_A,_DOLLAR,_NL,
+	// 830 CLS
+	LINE(830),_CLS,_NL,
+	// 840 IF CODE(A$)=62 THEN GOTO 530
+	LINE(840),_IF,_C,_O,_D,_E,_LPAR,_A,_DOLLAR,_RPAR,_EQU,_6,_2,_THEN,_GOTO,_5,_3,_0,_NL,
+	// 850 STOP
+	LINE(850),_STOP,_NL,
+
+	// stop mark (2 B)
+	0,0
+},
+
+// ==== Slot 7 (870 B, free 154 B)
+
+{
+// -------------------------------------------------
+// SQUARE ROOT (425 B)
+// To use: LOAD 7, RUN
+
+	// 10 REM
+	LINE(10),_REM,_NL,
+	// 20 REM SQUARE ROOT
+	LINE(20),_REM,_S,_Q,_U,_A,_R,_E,_SPC,_R,_O,_O,_T,_NL,
+	// 30 REM
+	LINE(30),_REM,_NL,
+	// 40 PRINT "INPUT NUMBER"
+	LINE(40),_PRINT,_QUOT,_I,_N,_P,_U,_T,_SPC,_N,_U,_M,_B,_E,_R,_QUOT,_NL,
+	// 50 INPUT A
+	LINE(50),_INPUT,_A,_NL,
+	// 60 CLS
+	LINE(60),_CLS,_NL,
+	// 70 PRINT "SQUARE ROOT OF ";A;" IS"
+	LINE(70),_PRINT,_QUOT,_S,_Q,_U,_A,_R,_E,_SPC,_R,_O,_O,_T,_SPC,_O,_F,
+		_SPC,_QUOT,_SEMI,_A,_SEMI,_QUOT,_SPC,_I,_S,_QUOT,_NL,
+	// 80 LET U=174
+	LINE(80),_LET,_U,_EQU,_1,_7,_4,_NL,
+	// 90 LET L=0
+	LINE(90),_LET,_L,_EQU,_0,_NL,
+	// 100 LET F=0
+	LINE(100),_LET,_F,_EQU,_0,_NL,
+	// 110 LET D=0
+	LINE(110),_LET,_D,_EQU,_0,_NL,
+	// 120 LET N=(U+L)/2
+	LINE(120),_LET,_N,_EQU,_LPAR,_U,_ADD,_L,_RPAR,_DIV,_2,_NL,
+	// 130 IF (N-1)**2<A AND (N+1)**2>A THEN GOTO 170
+	LINE(130),_IF,_LPAR,_N,_SUB,_1,_RPAR,_PWR,_2,_LT,_A,_AND,_LPAR,_N,_ADD,_1,_RPAR,
+		_PWR,_2,_GR,_A,_THEN,_GOTO,_1,_7,_0,_NL,
+	// 140 IF N**2>A THEN LET U=N
+	LINE(140),_IF,_N,_PWR,_2,_GR,_A,_THEN,_LET,_U,_EQU,_N,_NL,
+	// 150 IF N**2<A THEN LET L=N
+	LINE(150),_IF,_N,_PWR,_2,_LT,_A,_THEN,_LET,_L,_EQU,_N,_NL,
+	// 160 GOTO 120
+	LINE(160),_GOTO,_1,_2,_0,_NL,
+	// 170 IF N**2>A THEN LET N=N-1
+	LINE(170),_IF,_N,_PWR,_2,_GR,_A,_THEN,_LET,_N,_EQU,_N,_SUB,_1,_NL,
+	// 180 LET E=100*(A-N**2)
+	LINE(180),_LET,_E,_EQU,_1,_0,_0,_MUL,_LPAR,_A,_SUB,_N,_PWR,_2,_RPAR,_NL,
+	// 190 IF E<2 THEN GOTO 350
+	LINE(190),_IF,_E,_LT,_2,_THEN,_GOTO,_3,_5,_0,_NL,
+	// 200 LET F=(E/N)/2
+	LINE(200),_LET,_F,_EQU,_LPAR,_E,_DIV,_N,_RPAR,_DIV,_2,_NL,
+	// 210 LET Q=F**2
+	LINE(210),_LET,_Q,_EQU,_F,_PWR,_2,_NL,
+	// 220 LET E=E-2*N*F
+	LINE(220),_LET,_E,_EQU,_E,_SUB,_2,_MUL,_N,_MUL,_F,_NL,
+	// 230 IF E>0 THEN GOTO 270
+	LINE(230),_IF,_E,_GR,_0,_THEN,_GOTO,_2,_7,_0,_NL,
+	// 240 LET F=F-1
+	LINE(240),_LET,_F,_EQU,_F,_SUB,_1,_NL,
+	// 250 LET E=100*(A-N**2)
+	LINE(250),_LET,_E,_EQU,_1,_0,_0,_MUL,_LPAR,_A,_SUB,_N,_PWR,_2,_RPAR,_NL,
+	// 260 GOTO 210
+	LINE(260),_GOTO,_2,_1,_0,_NL,
+	// 270 LET E=10*E-Q/10
+	LINE(270),_LET,_E,_EQU,_1,_0,_MUL,_E,_SUB,_Q,_DIV,_1,_0,_NL,
+	// 280 IF E<0 THEN GOTO 240
+	LINE(280),_IF,_E,_LT,_0,_THEN,_GOTO,_2,_4,_0,_NL,
+	// 290 LET D=(E/N)/2
+	LINE(290),_LET,_D,_EQU,_LPAR,_E,_DIV,_N,_RPAR,_DIV,_2,_NL,
+	// 300 LET H=E-(2*F*D)/2
+	LINE(300),_LET,_H,_EQU,_E,_SUB,_LPAR,_2,_MUL,_F,_MUL,_D,_RPAR,_DIV,_2,_NL,
+	// 310 IF H>0 THEN GOTO 340
+	LINE(310),_IF,_H,_GR,_0,_THEN,_GOTO,_3,_4,_0,_NL,
+	// 320 LET D=D-1
+	LINE(320),_LET,_D,_EQU,_D,_SUB,_1,_NL,
+	// 330 GOTO 300
+	LINE(330),_GOTO,_3,_0,_0,_NL,
+	// 340 LET D=(H/N)/2
+	LINE(340),_LET,_D,_EQU,_LPAR,_H,_DIV,_N,_RPAR,_DIV,_2,_NL,
+	// 350 PRINT N;".";F;D
+	LINE(350),_PRINT,_N,_SEMI,_QUOT,_DOT,_QUOT,_SEMI,_F,_SEMI,_D,_NL,
+	// 360 STOP
+	LINE(360),_STOP,_NL,
+
+// -------------------------------------------------
+// SIMPLE SIMON (443 B)
+// To use: LOAD 7, RUN 400
+
+	// 410 REM
+	LINE(410),_REM,_NL,
+	// 420 REM SIMPLE SIMON
+	LINE(420),_REM,_S,_I,_M,_P,_L,_E,_SPC,_S,_I,_M,_O,_N,_NL,
+	// 430 REM
+	LINE(430),_REM,_NL,
+	// 440 DIM A(30)
+	LINE(440),_DIM,_A,_LPAR,_3,_0,_RPAR,_NL,
+	// 450 LET J=-1
+	LINE(450),_LET,_J,_EQU,_SUB,_1,_NL,
+	// 460 RANDOMISE
+	LINE(460),_RANDOM,_NL,
+	// 470 DIM P(7)
+	LINE(470),_DIM,_P,_LPAR,_7,_RPAR,_NL,
+	// 480 FOR I=0 TO 7
+	LINE(480),_FOR,_I,_EQU,_0,_TO,_7,_NL,
+	// 490 LET P(I)=2**(7-I)
+	LINE(490),_LET,_P,_LPAR,_I,_RPAR,_EQU,_2,_PWR,_LPAR,_7,_SUB,_I,_RPAR,_NL,
+	// 500 NEXT I
+	LINE(500),_NEXT,_I,_NL,
+	// 510 LET X=RND(26)+37
+	LINE(510),_LET,_X,_EQU,_R,_N,_D,_LPAR,_2,_6,_RPAR,_ADD,_3,_7,_NL,
+	// 520 CLS
+	LINE(520),_CLS,_NL,
+	// 530 PRINT "NEXT CHAR IS"
+	LINE(530),_PRINT,_QUOT,_N,_E,_X,_T,_SPC,_C,_H,_A,_R,_SPC,_I,_S,_QUOT,_NL,
+	// 540 FOR L=0 TO 7
+	LINE(540),_FOR,_L,_EQU,_0,_TO,_7,_NL,
+	// 550 LET V=PEEK(3584+L+8*X)
+	LINE(550),_LET,_V,_EQU,_P,_E,_E,_K,_LPAR,_3,_5,_8,_4,_ADD,_L,_ADD,_8,_MUL,_X,_RPAR,_NL,
+	// 560 FOR K=0 TO 7
+	LINE(560),_FOR,_K,_EQU,_0,_TO,_7,_NL,
+	// 570 LET G=(V AND P(K))=0
+	LINE(570),_LET,_G,_EQU,_LPAR,_V,_AND,_P,_LPAR,_K,_RPAR,_RPAR,_EQU,_0,_NL,
+	// 580 PRINT CHR$(-128*G);
+	LINE(580),_PRINT,_C,_H,_R,_DOLLAR,_LPAR,_SUB,_1,_2,_8,_MUL,_G,_RPAR,_SEMI,_NL,
+	// 590 NEXT K
+	LINE(590),_NEXT,_K,_NL,
+	// 600 PRINT
+	LINE(600),_PRINT,_NL,
+	// 610 NEXT L
+	LINE(610),_NEXT,_L,_NL,
+	// 620 IF X=15 THEN GOTO 770
+	LINE(620),_IF,_X,_EQU,_1,_5,_THEN,_GOTO,_7,_7,_0,_NL,
+	// 630 LET J=J+1
+	LINE(630),_LET,_J,_EQU,_J,_ADD,_1,_NL,
+	// 640 IF J=31 THEN GOTO 820
+	LINE(640),_IF,_J,_EQU,_3,_1,_THEN,_GOTO,_8,_2,_0,_NL,
+	// 650 LET A(J)=X
+	LINE(650),_LET,_A,_LPAR,_J,_RPAR,_EQU,_X,_NL,
+	// 660 PRINT "PRINT ENTIRE SEQUENCE"
+	LINE(660),_PRINT,_QUOT,_P,_R,_I,_N,_T,_SPC,_E,_N,_T,_I,_R,_E,_SPC,_S,_E,_Q,_U,_E,_N,_C,_E,_QUOT,_NL,
+	// 670 INPUT A$
+	LINE(670),_INPUT,_A,_DOLLAR,_NL,
+	// 680 PRINT A$
+	LINE(680),_PRINT,_A,_DOLLAR,_NL,
+	// 690 FOR I=0 TO J
+	LINE(690),_FOR,_I,_EQU,_0,_TO,_J,_NL,
+	// 700 LET X=CODE(A$)
+	LINE(700),_LET,_X,_EQU,_C,_O,_D,_E,_LPAR,_A,_DOLLAR,_RPAR,_NL,
+	// 710 IF NOT A(I)=X THEN GOTO 750
+	LINE(710),_IF,_NOT,_A,_LPAR,_I,_RPAR,_EQU,_X,_THEN,_GOTO,_7,_5,_0,_NL,
+	// 720 LET A$=TL$(A$)
+	LINE(720),_LET,_A,_DOLLAR,_EQU,_T,_L,_DOLLAR,_LPAR,_A,_DOLLAR,_RPAR,_NL,
+	// 730 NEXT I
+	LINE(730),_NEXT,_I,_NL,
+	// 740 GOTO 510
+	LINE(740),_GOTO,_5,_1,_0,_NL,
+	// 750 LET X=15
+	LINE(750),_LET,_X,_EQU,_1,_5,_NL,
+	// 760 GOTO 540
+	LINE(760),_GOTO,_5,_4,_0,_NL,
+	// 770 PRINT "SORRY IT WAS:"
+	LINE(770),_PRINT,_QUOT,_S,_O,_R,_R,_Y,_SPC,_I,_T,_SPC,_W,_A,_S,_COLON,_QUOT,_NL,
+	// 780 FOR I=0 TO J
+	LINE(780),_FOR,_I,_EQU,_0,_TO,_J,_NL,
+	// 790 PRINT CHR$(A(I));
+	LINE(790),_PRINT,_C,_H,_R,_DOLLAR,_LPAR,_A,_LPAR,_I,_RPAR,_RPAR,_SEMI,_NL,
+	// 800 NEXT I
+	LINE(800),_NEXT,_I,_NL,
+	// 810 STOP
+	LINE(810),_STOP,_NL,
+	// 820 PRINT "I GIVE UP"
+	LINE(820),_PRINT,_QUOT,_I,_SPC,_G,_I,_V,_E,_SPC,_U,_P,_QUOT,_NL,
+	// 830 STOP
+	LINE(830),_STOP,_NL,
+
+	// stop mark (2 B)
+	0,0
+},
+
+// ==== Slot 8 (1002 B, free 22 B)
+
+{
+// -------------------------------------------------
+// KING HAMMURABI (831 B)
+// To use: LOAD 8, RUN
+
+	// 10 REM
+	LINE(10),_REM,_NL,
+	// 20 REM KING HAMMURABI
+	LINE(20),_REM,_K,_I,_N,_G,_SPC,_H,_A,_M,_M,_U,_R,_A,_B,_I,_NL,
+	// 30 REM
+	LINE(30),_REM,_NL,
+	// 40 LET A$="ACRES "
+	LINE(40),_LET,_A,_DOLLAR,_EQU,_QUOT,_A,_C,_R,_E,_S,_SPC,_QUOT,_NL,
+	// 50 LET B$="BUSHELS "
+	LINE(50),_LET,_B,_DOLLAR,_EQU,_QUOT,_B,_U,_S,_H,_E,_L,_S,_SPC,_QUOT,_NL,
+	// 60 LET M$="HOW MANY "
+	LINE(60),_LET,_M,_DOLLAR,_EQU,_QUOT,_H,_O,_W,_SPC,_M,_A,_N,_Y,_SPC,_QUOT,_NL,
+	// 70 RANDOMISE
+	LINE(70),_RANDOM,_NL,
+	// 80 LET H=100
+	LINE(80),_LET,_H,_EQU,_1,_0,_0,_NL,
+	// 90 LET S=3000
+	LINE(90),_LET,_S,_EQU,_3,_0,_0,_0,_NL,
+	// 100 LET A=1000
+	LINE(100),_LET,_A,_EQU,_1,_0,_0,_0,_NL,
+	// 110 LET Y=0
+	LINE(110),_LET,_Y,_EQU,_0,_NL,
+	// 120 PRINT "YOUR POPULATION: ";H
+	LINE(120),_PRINT,_QUOT,_Y,_O,_U,_R,_SPC,_P,_O,_P,_U,_L,_A,_T,_I,_O,_N,_COLON,_SPC,_QUOT,_SEMI,_H,_NL,
+	// 130 PRINT B$;"OF GRAIN: ";S
+	LINE(130),_PRINT,_B,_DOLLAR,_SEMI,_QUOT,_O,_F,_SPC,_G,_R,_A,_I,_N,_COLON,_SPC,_QUOT,_SEMI,_S,_NL,
+	// 140 PRINT A$;"OF LAND: ";A
+	LINE(140),_PRINT,_A,_DOLLAR,_SEMI,_QUOT,_O,_F,_SPC,_L,_A,_N,_D,_COLON,_SPC,_QUOT,_SEMI,_A,_NL,
+	// 150 PRINT
+	LINE(150),_PRINT,_NL,
+	// 160 LET L=5+RND(20)
+	LINE(160),_LET,_L,_EQU,_5,_ADD,_R,_N,_D,_LPAR,_2,_0,_RPAR,_NL,
+	// 170 PRINT "PRICE IS ";L;" ";B$;"PER ACRE"
+	LINE(170),_PRINT,_QUOT,_P,_R,_I,_C,_E,_SPC,_I,_S,_SPC,_QUOT,_SEMI,_L,_SEMI,_QUOT,_SPC,_QUOT,_SEMI,
+		_B,_DOLLAR,_SEMI,_QUOT,_P,_E,_R,_SPC,_A,_C,_R,_E,_QUOT,_NL,
+	// 180 PRINT M$;A$;"TO BUY? ";
+	LINE(180),_PRINT,_M,_DOLLAR,_SEMI,_A,_DOLLAR,_SEMI,_QUOT,_T,_O,_SPC,_B,_U,_Y,_QUERY,_SPC,_QUOT,_SEMI,_NL,
+	// 190 INPUT V
+	LINE(190),_INPUT,_V,_NL,
+	// 200 IF V*L>S THEN LET V=S/L
+	LINE(200),_IF,_V,_MUL,_L,_GR,_S,_THEN,_LET,_V,_EQU,_S,_DIV,_L,_NL,
+	// 210 PRINT V
+	LINE(210),_PRINT,_V,_NL,
+	// 220 IF V>0 THEN GOTO 280
+	LINE(220),_IF,_V,_GR,_0,_THEN,_GOTO,_2,_8,_0,_NL,
+	// 230 PRINT M$;A$;"TO SELL? ";
+	LINE(230),_PRINT,_M,_DOLLAR,_SEMI,_A,_DOLLAR,_SEMI,_QUOT,_T,_O,
+		_SPC,_S,_E,_L,_L,_QUERY,_SPC,_QUOT,_SEMI,_NL,
+	// 240 INPUT V
+	LINE(240),_INPUT,_V,_NL,
+	// 250 IF V>A THEN LET V=A
+	LINE(250),_IF,_V,_GR,_A,_THEN,_LET,_V,_EQU,_A,_NL,
+	// 260 PRINT V
+	LINE(260),_PRINT,_V,_NL,
+	// 270 LET V=-V
+	LINE(270),_LET,_V,_EQU,_SUB,_V,_NL,
+	// 280 LET A=A+V
+	LINE(280),_LET,_A,_EQU,_A,_ADD,_V,_NL,
+	// 290 LET S=S-L*V
+	LINE(290),_LET,_S,_EQU,_S,_SUB,_L,_MUL,_V,_NL,
+	// 300 PRINT M$;B$;"FOR FOOD? ";
+	LINE(300),_PRINT,_M,_DOLLAR,_SEMI,_B,_DOLLAR,_SEMI,_QUOT,
+		_F,_O,_R,_SPC,_F,_O,_O,_D,_QUERY,_SPC,_QUOT,_SEMI,_NL,
+	// 310 INPUT F
+	LINE(310),_INPUT,_F,_NL,
+	// 320 IF F>S THEN LET F=S
+	LINE(320),_IF,_F,_GR,_S,_THEN,_LET,_F,_EQU,_S,_NL,
+	// 330 PRINT F
+	LINE(330),_PRINT,_F,_NL,
+	// 340 LET S=S-F
+	LINE(340),_LET,_S,_EQU,_S,_SUB,_F,_NL,
+	// 350 PRINT M$;B$;"FOR SEED? ";
+	LINE(350),_PRINT,_M,_DOLLAR,_SEMI,_B,_DOLLAR,_SEMI,_QUOT,_F,_O,_R,
+		_SPC,_S,_E,_E,_D,_QUERY,_SPC,_QUOT,_SEMI,_NL,
+	// 360 INPUT P
+	LINE(360),_INPUT,_P,_NL,
+	// 370 IF P>S THEN LET P=S
+	LINE(370),_IF,_P,_GR,_S,_THEN,_LET,_P,_EQU,_S,_NL,
+	// 380 LET S=S-P
+	LINE(380),_LET,_S,_EQU,_S,_SUB,_P,_NL,
+	// 390 IF P>2*A THEN LET P=2*A
+	LINE(390),_IF,_P,_GR,_2,_MUL,_A,_THEN,_LET,_P,_EQU,_2,_MUL,_A,_NL,
+	// 400 IF P>25*H THEN LET P=25*H
+	LINE(400),_IF,_P,_GR,_2,_5,_MUL,_H,_THEN,_LET,_P,_EQU,_2,_5,_MUL,_H,_NL,
+	// 410 LET R=RND(S/2)-1
+	LINE(410),_LET,_R,_EQU,_R,_N,_D,_LPAR,_S,_DIV,_2,_RPAR,_SUB,_1,_NL,
+	// 420 LET C=RND(10*P)
+	LINE(420),_LET,_C,_EQU,_R,_N,_D,_LPAR,_1,_0,_MUL,_P,_RPAR,_NL,
+	// 430 LET S=S+C-R
+	LINE(430),_LET,_S,_EQU,_S,_ADD,_C,_SUB,_R,_NL,
+	// 440 LET D=H-F/10
+	LINE(440),_LET,_D,_EQU,_H,_SUB,_F,_DIV,_1,_0,_NL,
+	// 450 IF D<1 THEN LET D=0
+	LINE(450),_IF,_D,_LT,_1,_THEN,_LET,_D,_EQU,_0,_NL,
+	// 460 LET N=H/10+RND(H/10)-1
+	LINE(460),_LET,_N,_EQU,_H,_DIV,_1,_0,_ADD,_R,_N,_D,_LPAR,_H,_DIV,_1,_0,_RPAR,_SUB,_1,_NL,
+	// 470 LET H=H-D+N
+	LINE(470),_LET,_H,_EQU,_H,_SUB,_D,_ADD,_N,_NL,
+	// 480 LET T=0
+	LINE(480),_LET,_T,_EQU,_0,_NL,
+	// 490 IF RND(6)=3 THEN LET T=H/8+RND(H/5)
+	LINE(490),_IF,_R,_N,_D,_LPAR,_6,_RPAR,_EQU,_3,_THEN,_LET,_T,_EQU,
+		_H,_DIV,_8,_ADD,_R,_N,_D,_LPAR,_H,_DIV,_5,_RPAR,_NL,
+	// 500 LET H=H-T
+	LINE(500),_LET,_H,_EQU,_H,_SUB,_T,_NL,
+	// 510 CLS
+	LINE(510),_CLS,_NL,
+	// 520 LET Y=Y+1
+	LINE(520),_LET,_Y,_EQU,_Y,_ADD,_1,_NL,
+	// 530 PRINT "YEAR ";Y;" OF YOUR REIGN"
+	LINE(530),_PRINT,_QUOT,_Y,_E,_A,_R,_SPC,_QUOT,_SEMI,_Y,_SEMI,_QUOT,
+		_SPC,_O,_F,_SPC,_Y,_O,_U,_R,_SPC,_R,_E,_I,_G,_N,_QUOT,_NL,
+	// 540 IF R>0 THEN PRINT "RATS ATE ";R;" ";B$
+	LINE(540),_IF,_R,_GR,_0,_THEN,_PRINT,_QUOT,_R,_A,_T,_S,_SPC,_A,_T,_E,_SPC,_QUOT,
+		_SEMI,_R,_SEMI,_QUOT,_SPC,_QUOT,_SEMI,_B,_DOLLAR,_NL,
+	// 550 IF N>0 THEN PRINT N;" BABIES BORN"
+	LINE(550),_IF,_N,_GR,_0,_THEN,_PRINT,_N,_SEMI,_QUOT,_SPC,_B,_A,_B,_I,_E,_S,_SPC,_B,_O,_R,_N,_QUOT,_NL,
+	// 560 IF D>0 THEN PRINT D;" PEOPLE STARVED"
+	LINE(560),_IF,_D,_GR,_0,_THEN,_PRINT,_D,_SEMI,_QUOT,_SPC,_P,_E,_O,_P,_L,_E,_SPC,_S,_T,_A,_R,_V,_E,_D,_QUOT,_NL,
+	// 570 IF T>0 THEN PRINT T;" DIED OF PLAGUE"
+	LINE(570),_IF,_T,_GR,_0,_THEN,_PRINT,_T,_SEMI,_QUOT,_SPC,_D,_I,_E,_D,
+		_SPC,_O,_F,_SPC,_P,_L,_A,_G,_U,_E,_QUOT,_NL,
+	// 580 IF H>0 THEN GOTO 120
+	LINE(580),_IF,_H,_GR,_0,_THEN,_GOTO,_1,_2,_0,_NL,
+	// 590 PRINT "GAME OVER"
+	LINE(590),_PRINT,_QUOT,_G,_A,_M,_E,_SPC,_O,_V,_E,_R,_QUOT,_NL,
+	// 600 STOP
+	LINE(600),_STOP,_NL,
+
+// -------------------------------------------------
+// PRIME NUMBERS (169 B)
+// To use: LOAD 8, RUN 700
+
+	// 710 REM
+	LINE(710),_REM,_NL,
+	// 720 REM PRIME NUMBERS
+	LINE(720),_REM,_P,_R,_I,_M,_E,_SPC,_N,_U,_M,_B,_E,_R,_S,_NL,
+	// 730 REM
+	LINE(730),_REM,_NL,
+	// 740 DIM A(90)
+	LINE(740),_DIM,_A,_LPAR,_9,_0,_RPAR,_NL,
+	// 750 LET R=1
+	LINE(750),_LET,_R,_EQU,_1,_NL,
+	// 760 LET A(1)=2
+	LINE(760),_LET,_A,_LPAR,_1,_RPAR,_EQU,_2,_NL,
+	// 770 PRINT 2,
+	LINE(770),_PRINT,_2,_COMMA,_NL,
+	// 780 FOR X=3 TO 460
+	LINE(780),_FOR,_X,_EQU,_3,_TO,_4,_6,_0,_NL,
+	// 790 FOR Y=1 TO R
+	LINE(790),_FOR,_Y,_EQU,_1,_TO,_R,_NL,
+	// 800 IF X/A(R)>A(R) THEN GOTO 830
+	LINE(800),_IF,_X,_DIV,_A,_LPAR,_R,_RPAR,_GR,_A,_LPAR,_R,_RPAR,_THEN,_GOTO,_8,_3,_0,_NL,
+	// 810 IF X=(X/A(Y))*A(Y) THEN GOTO 860
+	LINE(810),_IF,_X,_EQU,_LPAR,_X,_DIV,_A,_LPAR,_Y,_RPAR,
+		_RPAR,_MUL,_A,_LPAR,_Y,_RPAR,_THEN,_GOTO,_8,_6,_0,_NL,
+	// 820 NEXT Y
+	LINE(820),_NEXT,_Y,_NL,
+	// 830 LET R=R+1
+	LINE(830),_LET,_R,_EQU,_R,_ADD,_1,_NL,
+	// 840 LET A(R)=X
+	LINE(840),_LET,_A,_LPAR,_R,_RPAR,_EQU,_X,_NL,
+	// 850 PRINT X,
+	LINE(850),_PRINT,_X,_COMMA,_NL,
+	// 860 LET X=X+1
+	LINE(860),_LET,_X,_EQU,_X,_ADD,_1,_NL,
+	// 870 NEXT X
+	LINE(870),_NEXT,_X,_NL,
+	// 880 STOP
+	LINE(880),_STOP,_NL,
+
+	// stop mark (2 B)
+	0,0
+},
+
+// ==== Slot 9 (1020 B, free 4)
+
+{
+
+// -------------------------------------------------
+// CASTLE DOORS (1018 B)
+// To use: LOAD 9, RUN
+
+	// 10 REM
+	LINE(10),_REM,_NL,
+	// 20 REM CASTLE DOORS
+	LINE(20),_REM,_C,_A,_S,_T,_L,_E,_SPC,_D,_O,_O,_R,_S,_NL,
+	// 30 REM
+	LINE(30),_REM,_NL,
+	// 40 RANDOMISE
+	LINE(40),_RANDOM,_NL,
+	// 50 LET B=RND(300)
+	LINE(50),_LET,_B,_EQU,_R,_N,_D,_LPAR,_3,_0,_0,_RPAR,_NL,
+	// 60 LET C=RND(50)
+	LINE(60),_LET,_C,_EQU,_R,_N,_D,_LPAR,_5,_0,_RPAR,_NL,
+	// 70 GOSUB 730
+	LINE(70),_GOSUB,_7,_3,_0,_NL,
+	// 80 IF C<1 THEN GOTO 650
+	LINE(80),_IF,_C,_LT,_1,_THEN,_GOTO,_6,_5,_0,_NL,
+	// 90 PRINT "4=OPEN DOOR 5=FIGHT WIZARD"
+	LINE(90),_PRINT,_QUOT,_4,_EQU,_O,_P,_E,_N,_SPC,_D,_O,_O,_R,
+		_SPC,_5,_EQU,_F,_I,_G,_H,_T,_SPC,_W,_I,_Z,_A,_R,_D,_QUOT,_NL,
+	// 100 LET A=0
+	LINE(100),_LET,_A,_EQU,_0,_NL,
+	// 110 LET D=RND(8)
+	LINE(110),_LET,_D,_EQU,_R,_N,_D,_LPAR,_8,_RPAR,_NL,
+	// 120 LET E=RND(30)
+	LINE(120),_LET,_E,_EQU,_R,_N,_D,_LPAR,_3,_0,_RPAR,_NL,
+	// 130 LET G=RND(60)
+	LINE(130),_LET,_G,_EQU,_R,_N,_D,_LPAR,_6,_0,_RPAR,_NL,
+	// 140 LET H=RND(10)
+	LINE(140),_LET,_H,_EQU,_R,_N,_D,_LPAR,_1,_0,_RPAR,_NL,
+	// 150 INPUT O
+	LINE(150),_INPUT,_O,_NL,
+	// 160 CLS
+	LINE(160),_CLS,_NL,
+	// 170 IF O=5 THEN GOTO 650
+	LINE(170),_IF,_O,_EQU,_5,_THEN,_GOTO,_6,_5,_0,_NL,
+	// 180 IF D=1 THEN LET A=RND(10)
+	LINE(180),_IF,_D,_EQU,_1,_THEN,_LET,_A,_EQU,_R,_N,_D,_LPAR,_1,_0,_RPAR,_NL,
+	// 190 IF D=1 THEN LET A$="ZOMBIE"
+	LINE(190),_IF,_D,_EQU,_1,_THEN,_LET,_A,_DOLLAR,_EQU,_QUOT,_Z,_O,_M,_B,_I,_E,_QUOT,_NL,
+	// 200 IF D=2 THEN LET A=RND(20)
+	LINE(200),_IF,_D,_EQU,_2,_THEN,_LET,_A,_EQU,_R,_N,_D,_LPAR,_2,_0,_RPAR,_NL,
+	// 210 IF D=2 THEN LET A$="WITCH"
+	LINE(210),_IF,_D,_EQU,_2,_THEN,_LET,_A,_DOLLAR,_EQU,_QUOT,_W,_I,_T,_C,_H,_QUOT,_NL,
+	// 220 IF D=3 THEN LET A=RND(30)
+	LINE(220),_IF,_D,_EQU,_3,_THEN,_LET,_A,_EQU,_R,_N,_D,_LPAR,_3,_0,_RPAR,_NL,
+	// 230 IF D=3 THEN LET A$="CYCLOP"
+	LINE(230),_IF,_D,_EQU,_3,_THEN,_LET,_A,_DOLLAR,_EQU,_QUOT,_C,_Y,_C,_L,_O,_P,_QUOT,_NL,
+	// 240 IF D=4 THEN LET A=RND(40)
+	LINE(240),_IF,_D,_EQU,_4,_THEN,_LET,_A,_EQU,_R,_N,_D,_LPAR,_4,_0,_RPAR,_NL,
+	// 250 IF D=4 THEN LET A$="GARGOYLE"
+	LINE(250),_IF,_D,_EQU,_4,_THEN,_LET,_A,_DOLLAR,_EQU,_QUOT,_G,_A,_R,_G,_O,_Y,_L,_E,_QUOT,_NL,
+	// 260 IF D=5 THEN LET A=RND(50)
+	LINE(260),_IF,_D,_EQU,_5,_THEN,_LET,_A,_EQU,_R,_N,_D,_LPAR,_5,_0,_RPAR,_NL,
+	// 270 IF D=5 THEN LET A$="DRAGON"
+	LINE(270),_IF,_D,_EQU,_5,_THEN,_LET,_A,_DOLLAR,_EQU,_QUOT,_D,_R,_A,_G,_O,_N,_QUOT,_NL,
+	// 280 IF D>5 THEN GOTO 590
+	LINE(280),_IF,_D,_GR,_5,_THEN,_GOTO,_5,_9,_0,_NL,
+	// 290 PRINT "YOU SEE ";A$
+	LINE(290),_PRINT,_QUOT,_Y,_O,_U,_SPC,_S,_E,_E,_SPC,_QUOT,_SEMI,_A,_DOLLAR,_NL,
+	// 300 GOSUB 730
+	LINE(300),_GOSUB,_7,_3,_0,_NL,
+	// 310 PRINT "1=FIGHT 2=BRIBE 3=RUN"
+	LINE(310),_PRINT,_QUOT,_1,_EQU,_F,_I,_G,_H,_T,_SPC,_2,_EQU,_B,_R,_I,_B,_E,
+		_SPC,_3,_EQU,_R,_U,_N,_QUOT,_NL,
+	// 320 INPUT N
+	LINE(320),_INPUT,_N,_NL,
+	// 330 CLS
+	LINE(330),_CLS,_NL,
+	// 340 IF N=2 THEN GOTO 480
+	LINE(340),_IF,_N,_EQU,_2,_THEN,_GOTO,_4,_8,_0,_NL,
+	// 350 IF N=3 THEN GOTO 560
+	LINE(350),_IF,_N,_EQU,_3,_THEN,_GOTO,_5,_6,_0,_NL,
+	// 360 IF C<A THEN GOTO 650
+	LINE(360),_IF,_C,_LT,_A,_THEN,_GOTO,_6,_5,_0,_NL,
+	// 370 GOSUB 730
+	LINE(370),_GOSUB,_7,_3,_0,_NL,
+	// 380 PRINT "ATTACK STRENGTH?"
+	LINE(380),_PRINT,_QUOT,_A,_T,_T,_A,_C,_K,_SPC,_S,_T,_R,_E,_N,_G,_T,_H,_QUERY,_QUOT,_NL,
+	// 390 INPUT Q
+	LINE(390),_INPUT,_Q,_NL,
+	// 400 CLS
+	LINE(400),_CLS,_NL,
+	// 410 IF Q>C THEN LET Q=C
+	LINE(410),_IF,_Q,_GR,_C,_THEN,_LET,_Q,_EQU,_C,_NL,
+	// 420 IF Q<A THEN LET C=C-Q
+	LINE(420),_IF,_Q,_LT,_A,_THEN,_LET,_C,_EQU,_C,_SUB,_Q,_NL,
+	// 430 IF Q<A THEN PRINT "YOU LOST"
+	LINE(430),_IF,_Q,_LT,_A,_THEN,_PRINT,_QUOT,_Y,_O,_U,_SPC,_L,_O,_S,_T,_QUOT,_NL,
+	// 440 IF Q<A THEN GOTO 70
+	LINE(440),_IF,_Q,_LT,_A,_THEN,_GOTO,_7,_0,_NL,
+	// 450 LET C=C+G
+	LINE(450),_LET,_C,_EQU,_C,_ADD,_G,_NL,
+	// 460 PRINT "YOU WON"
+	LINE(460),_PRINT,_QUOT,_Y,_O,_U,_SPC,_W,_O,_N,_QUOT,_NL,
+	// 470 GOTO 70
+	LINE(470),_GOTO,_7,_0,_NL,
+	// 480 PRINT "BRIBE STRENGTH?"
+	LINE(480),_PRINT,_QUOT,_B,_R,_I,_B,_E,_SPC,_S,_T,_R,_E,_N,_G,_T,_H,_QUERY,_QUOT,_NL,
+	// 490 INPUT P
+	LINE(490),_INPUT,_P,_NL,
+	// 500 CLS
+	LINE(500),_CLS,_NL,
+	// 510 IF P<E THEN PRINT "BRIBE REFUSED"
+	LINE(510),_IF,_P,_LT,_E,_THEN,_PRINT,_QUOT,_B,_R,_I,_B,_E,_SPC,
+		_R,_E,_F,_U,_S,_E,_D,_QUOT,_NL,
+	// 520 IF P<E THEN GOTO 290
+	LINE(520),_IF,_P,_LT,_E,_THEN,_GOTO,_2,_9,_0,_NL,
+	// 530 LET C=C-P+G
+	LINE(530),_LET,_C,_EQU,_C,_SUB,_P,_ADD,_G,_NL,
+	// 540 PRINT "BRIBE ACCEPTED"
+	LINE(540),_PRINT,_QUOT,_B,_R,_I,_B,_E,_SPC,_A,_C,_C,_E,_P,_T,_E,_D,_QUOT,_NL,
+	// 550 GOTO 70
+	LINE(550),_GOTO,_7,_0,_NL,
+	// 560 PRINT "YOU GOT AWAY"
+	LINE(560),_PRINT,_QUOT,_Y,_O,_U,_SPC,_G,_O,_T,_SPC,_A,_W,_A,_Y,_QUOT,_NL,
+	// 570 LET C=C-H
+	LINE(570),_LET,_C,_EQU,_C,_SUB,_H,_NL,
+	// 580 GOTO 70
+	LINE(580),_GOTO,_7,_0,_NL,
+	// 590 IF D=6 THEN PRINT "SAVE PRINCESS"
+	LINE(590),_IF,_D,_EQU,_6,_THEN,_PRINT,_QUOT,_S,_A,_V,_E,_SPC,_P,_R,_I,_N,_C,_E,_S,_S,_QUOT,_NL,
+	// 600 IF D=6 THEN LET C=C+50
+	LINE(600),_IF,_D,_EQU,_6,_THEN,_LET,_C,_EQU,_C,_ADD,_5,_0,_NL,
+	// 610 IF D=7 THEN PRINT "FAIRY MAGIC POTION"
+	LINE(610),_IF,_D,_EQU,_7,_THEN,_PRINT,_QUOT,_F,_A,_I,_R,_Y,_SPC,_M,_A,_G,_I,_C,_SPC,_P,_O,_T,_I,_O,_N,_QUOT,_NL,
+	// 620 IF D=7 THEN LET C=C*2
+	LINE(620),_IF,_D,_EQU,_7,_THEN,_LET,_C,_EQU,_C,_MUL,_2,_NL,
+	// 630 IF D=8 THEN PRINT "NOTHING"
+	LINE(630),_IF,_D,_EQU,_8,_THEN,_PRINT,_QUOT,_N,_O,_T,_H,_I,_N,_G,_QUOT,_NL,
+	// 640 GOTO 70
+	LINE(640),_GOTO,_7,_0,_NL,
+	// 650 PRINT
+	LINE(650),_PRINT,_NL,
+	// 660 IF C>B OR C=B THEN PRINT "WIZARD DEFEATED-YOU WIN"
+	LINE(660),_IF,_C,_GR,_B,_OR,_C,_EQU,_B,_THEN,_PRINT,_QUOT,_W,_I,_Z,_A,_R,_D,
+		_SPC,_D,_E,_F,_E,_A,_T,_E,_D,_SUB,_Y,_O,_U,_SPC,_W,_I,_N,_QUOT,_NL,
+	// 670 IF C<B OR C<A THEN PRINT "YOU DEFEATED-GAME OVER"
+	LINE(670),_IF,_C,_LT,_B,_OR,_C,_LT,_A,_THEN,_PRINT,_QUOT,_Y,_O,_U,_SPC,_D,_E,_F,_E,_A,_T,_E,_D,
+		_SUB,_G,_A,_M,_E,_SPC,_O,_V,_E,_R,_QUOT,_NL,
+	// 680 PRINT
+	LINE(680),_PRINT,_NL,
+	// 690 PRINT "PLAY AGAIN? (Y)"
+	LINE(690),_PRINT,_QUOT,_P,_L,_A,_Y,_SPC,_A,_G,_A,_I,_N,_QUERY,_SPC,_LPAR,_Y,_RPAR,_QUOT,_NL,
+	// 700 INPUT A$
+	LINE(700),_INPUT,_A,_DOLLAR,_NL,
+	// 710 IF CODE(A$)=62 THEN GOTO 50
+	LINE(710),_IF,_C,_O,_D,_E,_LPAR,_A,_DOLLAR,_RPAR,_EQU,_6,_2,_THEN,_GOTO,_5,_0,_NL,
+	// 720 STOP
+	LINE(720),_STOP,_NL,
+	// 730 PRINT
+	LINE(730),_PRINT,_NL,
+	// 740 PRINT "YOUR STRENGTH IS ";C
+	LINE(740),_PRINT,_QUOT,_Y,_O,_U,_R,_SPC,_S,_T,_R,_E,_N,_G,_T,_H,_SPC,_I,_S,_SPC,_QUOT,_SEMI,_C,_NL,
+	// 750 PRINT
+	LINE(750),_PRINT,_NL,
+	// 760 RETURN
+	LINE(760),_RETURN,_NL,
+
+	// stop mark (2 B)
+	0,0
+},
+
+// ==== Slot 10 (958 B, 66 B)
+
+{
+// -------------------------------------------------
+// ACEY DEUCEY (In-Between) (644 B)
+// Player wins if third card lies between two cards.
+// To use: LOAD 10, RUN
+
+	// 10 REM
+	LINE(10),_REM,_NL,
+	// 20 REM ACEY DEUCEY
+	LINE(20),_REM,_A,_C,_E,_Y,_SPC,_D,_E,_U,_C,_E,_Y,_NL,
+	// 30 REM
+	LINE(30),_REM,_NL,
+	// 40 RANDOMISE
+	LINE(40),_RANDOM,_NL,
+	// 50 LET Q=100
+	LINE(50),_LET,_Q,_EQU,_1,_0,_0,_NL,
+	// 60 GOTO 120
+	LINE(60),_GOTO,_1,_2,_0,_NL,
+	// 70 PRINT "HIT NEWLINE (Y=BREAK)"
+	LINE(70),_PRINT,_QUOT,_H,_I,_T,_SPC,_N,_E,_W,_L,_I,_N,_E,
+		_SPC,_LPAR,_Y,_EQU,_B,_R,_E,_A,_K,_RPAR,_QUOT,_NL,
+	// 80 INPUT A$
+	LINE(80),_INPUT,_A,_DOLLAR,_NL,
+	// 90 IF CODE(A$)=62 THEN STOP
+	LINE(90),_IF,_C,_O,_D,_E,_LPAR,_A,_DOLLAR,_RPAR,_EQU,_6,_2,_THEN,_STOP,_NL,
+	// 100 CLS
+	LINE(100),_CLS,_NL,
+	// 110 LET Q=Q+M
+	LINE(110),_LET,_Q,_EQU,_Q,_ADD,_M,_NL,
+	// 120 PRINT "YOU HAVE ";Q;" DOLLARS"
+	LINE(120),_PRINT,_QUOT,_Y,_O,_U,_SPC,_H,_A,_V,_E,_SPC,_QUOT,_SEMI,
+		_Q,_SEMI,_QUOT,_SPC,_D,_O,_L,_L,_A,_R,_S,_QUOT,_NL,
+	// 130 IF Q>0 THEN GOTO 190
+	LINE(130),_IF,_Q,_GR,_0,_THEN,_GOTO,_1,_9,_0,_NL,
+	// 140 PRINT "YOU ARE TAPPED OUT."
+	LINE(140),_PRINT,_QUOT,_Y,_O,_U,_SPC,_A,_R,_E,_SPC,
+		_T,_A,_P,_P,_E,_D,_SPC,_O,_U,_T,_DOT,_QUOT,_NL,
+	// 150 PRINT "PLAY AGAIN? (Y)"
+	LINE(150),_PRINT,_QUOT,_P,_L,_A,_Y,_SPC,_A,_G,_A,_I,_N,_QUERY,_SPC,_LPAR,_Y,_RPAR,_QUOT,_NL,
+	// 160 INPUT A$
+	LINE(160),_INPUT,_A,_DOLLAR,_NL,
+	// 170 IF CODE(A$)=62 THEN GOTO 50
+	LINE(170),_IF,_C,_O,_D,_E,_LPAR,_A,_DOLLAR,_RPAR,_EQU,_6,_2,_THEN,_GOTO,_5,_0,_NL,
+	// 180 STOP
+	LINE(180),_STOP,_NL,
+	// 190 PRINT "HERE ARE 2 CARDS:"
+	LINE(190),_PRINT,_QUOT,_H,_E,_R,_E,_SPC,_A,_R,_E,_SPC,_2,_SPC,_C,_A,_R,_D,_S,_COLON,_QUOT,_NL,
+	// 200 LET A=RND(13)+1
+	LINE(200),_LET,_A,_EQU,_R,_N,_D,_LPAR,_1,_3,_RPAR,_ADD,_1,_NL,
+	// 210 LET B=RND(13)+1
+	LINE(210),_LET,_B,_EQU,_R,_N,_D,_LPAR,_1,_3,_RPAR,_ADD,_1,_NL,
+	// 220 IF A<B THEN GOTO 260
+	LINE(220),_IF,_A,_LT,_B,_THEN,_GOTO,_2,_6,_0,_NL,
+	// 230 LET C=B
+	LINE(230),_LET,_C,_EQU,_B,_NL,
+	// 240 LET B=A
+	LINE(240),_LET,_B,_EQU,_A,_NL,
+	// 250 LET A=C
+	LINE(250),_LET,_A,_EQU,_C,_NL,
+	// 260 LET C=A
+	LINE(260),_LET,_C,_EQU,_A,_NL,
+	// 270 GOSUB 500
+	LINE(270),_GOSUB,_5,_0,_0,_NL,
+	// 280 LET C=B
+	LINE(280),_LET,_C,_EQU,_B,_NL,
+	// 290 GOSUB 500
+	LINE(290),_GOSUB,_5,_0,_0,_NL,
+	// 300 PRINT
+	LINE(300),_PRINT,_NL,
+	// 310 LET M=2
+	LINE(310),_LET,_M,_EQU,_2,_NL,
+	// 320 IF A=B THEN GOTO 480
+	LINE(320),_IF,_A,_EQU,_B,_THEN,_GOTO,_4,_8,_0,_NL,
+	// 330 IF M>Q THEN LET M=Q
+	LINE(330),_IF,_M,_GR,_Q,_THEN,_LET,_M,_EQU,_Q,_NL,
+	// 340 IF A+1=B THEN GOTO 450
+	LINE(340),_IF,_A,_ADD,_1,_EQU,_B,_THEN,_GOTO,_4,_5,_0,_NL,
+	// 350 PRINT "YOUR BET? (1-";Q;")"
+	LINE(350),_PRINT,_QUOT,_Y,_O,_U,_R,_SPC,_B,_E,_T,_QUERY,_SPC,
+		_LPAR,_1,_SUB,_QUOT,_SEMI,_Q,_SEMI,_QUOT,_RPAR,_QUOT,_NL,
+	// 360 INPUT M
+	LINE(360),_INPUT,_M,_NL,
+	// 370 IF M<1 THEN LET M=1
+	LINE(370),_IF,_M,_LT,_1,_THEN,_LET,_M,_EQU,_1,_NL,
+	// 380 IF M>Q THEN LET M=Q
+	LINE(380),_IF,_M,_GR,_Q,_THEN,_LET,_M,_EQU,_Q,_NL,
+	// 390 PRINT "NEXT CARD IS ";
+	LINE(390),_PRINT,_QUOT,_N,_E,_X,_T,_SPC,_C,_A,_R,_D,_SPC,_I,_S,_SPC,_QUOT,_SEMI,_NL,
+	// 400 LET D=RND(13)+1
+	LINE(400),_LET,_D,_EQU,_R,_N,_D,_LPAR,_1,_3,_RPAR,_ADD,_1,_NL,
+	// 410 LET C=D
+	LINE(410),_LET,_C,_EQU,_D,_NL,
+	// 420 GOSUB 500
+	LINE(420),_GOSUB,_5,_0,_0,_NL,
+	// 430 PRINT
+	LINE(430),_PRINT,_NL,
+	// 440 IF D>A AND D<B THEN GOTO 480
+	LINE(440),_IF,_D,_GR,_A,_AND,_D,_LT,_B,_THEN,_GOTO,_4,_8,_0,_NL,
+	// 450 PRINT "YOU LOSE ";M
+	LINE(450),_PRINT,_QUOT,_Y,_O,_U,_SPC,_L,_O,_S,_E,_SPC,_QUOT,_SEMI,_M,_NL,
+	// 460 LET M=-M
+	LINE(460),_LET,_M,_EQU,_SUB,_M,_NL,
+	// 470 GOTO 70
+	LINE(470),_GOTO,_7,_0,_NL,
+	// 480 PRINT "YOU WIN ";M
+	LINE(480),_PRINT,_QUOT,_Y,_O,_U,_SPC,_W,_I,_N,_SPC,_QUOT,_SEMI,_M,_NL,
+	// 490 GOTO 70
+	LINE(490),_GOTO,_7,_0,_NL,
+	// 500 IF C<11 THEN PRINT C,
+	LINE(500),_IF,_C,_LT,_1,_1,_THEN,_PRINT,_C,_COMMA,_NL,
+	// 510 IF C=11 THEN PRINT "JACK",
+	LINE(510),_IF,_C,_EQU,_1,_1,_THEN,_PRINT,_QUOT,_J,_A,_C,_K,_QUOT,_COMMA,_NL,
+	// 520 IF C=12 THEN PRINT "QUEEN",
+	LINE(520),_IF,_C,_EQU,_1,_2,_THEN,_PRINT,_QUOT,_Q,_U,_E,_E,_N,_QUOT,_COMMA,_NL,
+	// 530 IF C=13 THEN PRINT "KING",
+	LINE(530),_IF,_C,_EQU,_1,_3,_THEN,_PRINT,_QUOT,_K,_I,_N,_G,_QUOT,_COMMA,_NL,
+	// 540 IF C=14 THEN PRINT "ACE",
+	LINE(540),_IF,_C,_EQU,_1,_4,_THEN,_PRINT,_QUOT,_A,_C,_E,_QUOT,_COMMA,_NL,
+	// 550 RETURN
+	LINE(550),_RETURN,_NL,
+
+// -------------------------------------------------
+// CHEESE NIBBLER (312 B)
+// To use: LOAD 10, RUN 600
+
+	// 600 REM
+	LINE(600),_REM,_NL,
+	// 610 REM CHEESE NIBBLER
+	LINE(610),_REM,_C,_H,_E,_E,_S,_E,_SPC,_N,_I,_B,_B,_L,_E,_R,_NL,
+	// 620 REM
+	LINE(620),_REM,_NL,
+	// 630 DIM A(29)
+	LINE(630),_DIM,_A,_LPAR,_2,_9,_RPAR,_NL,
+	// 640 LET N=30
+	LINE(640),_LET,_N,_EQU,_3,_0,_NL,
+	// 650 CLS
+	LINE(650),_CLS,_NL,
+	// 660 FOR J=0 TO 2
+	LINE(660),_FOR,_J,_EQU,_0,_TO,_2,_NL,
+	// 670 FOR K=0 TO 9
+	LINE(670),_FOR,_K,_EQU,_0,_TO,_9,_NL,
+	// 680 LET B=A(K+10*J)
+	LINE(680),_LET,_B,_EQU,_A,_LPAR,_K,_ADD,_1,_0,_MUL,_J,_RPAR,_NL,
+	// 690 IF B=0 THEN PRINT "\A";
+	LINE(690),_IF,_B,_EQU,_0,_THEN,_PRINT,_QUOT,_CHESS,_QUOT,_SEMI,_NL,
+	// 700 IF B=1 THEN PRINT " ";
+	LINE(700),_IF,_B,_EQU,_1,_THEN,_PRINT,_QUOT,_SPC,_QUOT,_SEMI,_NL,
+	// 710 NEXT K
+	LINE(710),_NEXT,_K,_NL,
+	// 720 IF J=0 THEN PRINT " THIS IS THE CHEESE."
+	LINE(720),_IF,_J,_EQU,_0,_THEN,_PRINT,_QUOT,_SPC,_T,_H,_I,_S,_SPC,_I,_S,
+		_SPC,_T,_H,_E,_SPC,_C,_H,_E,_E,_S,_E,_DOT,_QUOT,_NL,
+	// 730 IF J=1 THEN PRINT " HIT NEWLINE TO LET"
+	LINE(730),_IF,_J,_EQU,_1,_THEN,_PRINT,_QUOT,_SPC,_H,_I,_T,_SPC,_N,_E,_W,_L,_I,_N,_E,
+		_SPC,_T,_O,_SPC,_L,_E,_T,_QUOT,_NL,
+	// 740 IF J=2 THEN PRINT " THE MOUSE NIBBLE IT."
+	LINE(740),_IF,_J,_EQU,_2,_THEN,_PRINT,_QUOT,_SPC,_T,_H,_E,_SPC,_M,_O,_U,_S,_E,_SPC,
+		_N,_I,_B,_B,_L,_E,_SPC,_I,_T,_DOT,_QUOT,_NL,
+	// 750 NEXT J
+	LINE(750),_NEXT,_J,_NL,
+	// 760 PRINT ,"   (SPACE TO BREAK)"
+	LINE(760),_PRINT,_COMMA,_QUOT,_SPC,_SPC,_SPC,_LPAR,_S,_P,_A,_C,_E,_SPC,_T,_O,_SPC,_B,_R,_E,_A,_K,_RPAR,_QUOT,_NL,
+	// 770 INPUT A$
+	LINE(770),_INPUT,_A,_DOLLAR,_NL,
+	// 780 LET B=RND(30)-1
+	LINE(780),_LET,_B,_EQU,_R,_N,_D,_LPAR,_3,_0,_RPAR,_SUB,_1,_NL,
+	// 790 IF A(B)=1 THEN GOTO 780
+	LINE(790),_IF,_A,_LPAR,_B,_RPAR,_EQU,_1,_THEN,_GOTO,_7,_8,_0,_NL,
+	// 800 LET A(B)=1
+	LINE(800),_LET,_A,_LPAR,_B,_RPAR,_EQU,_1,_NL,
+	// 810 LET N=N-1
+	LINE(810),_LET,_N,_EQU,_N,_SUB,_1,_NL,
+	// 820 IF N>0 AND A$="" THEN GOTO 650
+	LINE(820),_IF,_N,_GR,_0,_AND,_A,_DOLLAR,_EQU,_QUOT,_QUOT,_THEN,_GOTO,_6,_5,_0,_NL,
+	// 830 STOP
+	LINE(830),_STOP,_NL,
+
+	// stop mark (2 B)
+	0,0
+},
+
+// ==== Slot 11 (1021 B, free 3 B)
+
+{
+// -------------------------------------------------
+// RPN CALCULATOR (734 B)
+// To use: LOAD 11, RUN
+
+	// 10 REM
+	LINE(10),_REM,_NL,
+	// 20 REM RPN CALCULATOR
+	LINE(20),_REM,_R,_P,_N,_SPC,_C,_A,_L,_C,_U,_L,_A,_T,_O,_R,_NL,
+	// 30 REM
+	LINE(30),_REM,_NL,
+	// 40 DIM R(5)
+	LINE(40),_DIM,_R,_LPAR,_5,_RPAR,_NL,
+	// 50 CLS
+	LINE(50),_CLS,_NL,
+	// 60 PRINT "V ";R(5)
+	LINE(60),_PRINT,_QUOT,_V,_SPC,_QUOT,_SEMI,_R,_LPAR,_5,_RPAR,_NL,
+	// 70 PRINT "U ";R(4)
+	LINE(70),_PRINT,_QUOT,_U,_SPC,_QUOT,_SEMI,_R,_LPAR,_4,_RPAR,_NL,
+	// 80 PRINT "T ";R(3)
+	LINE(80),_PRINT,_QUOT,_T,_SPC,_QUOT,_SEMI,_R,_LPAR,_3,_RPAR,_NL,
+	// 90 PRINT "Z ";R(2)
+	LINE(90),_PRINT,_QUOT,_Z,_SPC,_QUOT,_SEMI,_R,_LPAR,_2,_RPAR,_NL,
+	// 100 PRINT "Y ";R(1)
+	LINE(100),_PRINT,_QUOT,_Y,_SPC,_QUOT,_SEMI,_R,_LPAR,_1,_RPAR,_NL,
+	// 110 PRINT "X ";R(0)
+	LINE(110),_PRINT,_QUOT,_X,_SPC,_QUOT,_SEMI,_R,_LPAR,_0,_RPAR,_NL,
+	// 120 PRINT "ENTER INTEGER OR - + * / ** X"
+	LINE(120),_PRINT,_QUOT,_E,_N,_T,_E,_R,_SPC,_I,_N,_T,_E,_G,_E,_R,_SPC,
+		_O,_R,_SPC,_SUB,_SPC,_ADD,_SPC,_MUL,_SPC,_DIV,_SPC,_PWR,_SPC,_X,_QUOT,_NL,
+	// 130 LET X=0
+	LINE(130),_LET,_X,_EQU,_0,_NL,
+	// 140 INPUT A$
+	LINE(140),_INPUT,_A,_DOLLAR,_NL,
+	// 150 IF A$="" THEN STOP
+	LINE(150),_IF,_A,_DOLLAR,_EQU,_QUOT,_QUOT,_THEN,_STOP,_NL,
+	// 160 LET C=CODE(A$)
+	LINE(160),_LET,_C,_EQU,_C,_O,_D,_E,_LPAR,_A,_DOLLAR,_RPAR,_NL,
+	// 170 LET A$=TL$(A$)
+	LINE(170),_LET,_A,_DOLLAR,_EQU,_T,_L,_DOLLAR,_LPAR,_A,_DOLLAR,_RPAR,_NL,
+	// 180 IF C=220 THEN GOTO 320
+	LINE(180),_IF,_C,_EQU,_2,_2,_0,_THEN,_GOTO,_3,_2,_0,_NL,
+	// 190 IF C=221 THEN GOTO 430
+	LINE(190),_IF,_C,_EQU,_2,_2,_1,_THEN,_GOTO,_4,_3,_0,_NL,
+	// 200 IF C=222 THEN GOTO 490
+	LINE(200),_IF,_C,_EQU,_2,_2,_2,_THEN,_GOTO,_4,_9,_0,_NL,
+	// 210 IF C=223 THEN GOTO 510
+	LINE(210),_IF,_C,_EQU,_2,_2,_3,_THEN,_GOTO,_5,_1,_0,_NL,
+	// 220 IF C=226 THEN GOTO 530
+	LINE(220),_IF,_C,_EQU,_2,_2,_6,_THEN,_GOTO,_5,_3,_0,_NL,
+	// 230 IF C=61 THEN GOTO 550
+	LINE(230),_IF,_C,_EQU,_6,_1,_THEN,_GOTO,_5,_5,_0,_NL,
+	// 240 IF C<28 OR C>37 THEN GOTO 140
+	LINE(240),_IF,_C,_LT,_2,_8,_OR,_C,_GR,_3,_7,_THEN,_GOTO,_1,_4,_0,_NL,
+	// 250 LET X=C-28
+	LINE(250),_LET,_X,_EQU,_C,_SUB,_2,_8,_NL,
+	// 260 GOSUB 590
+	LINE(260),_GOSUB,_5,_9,_0,_NL,
+	// 270 FOR I=0 TO 4
+	LINE(270),_FOR,_I,_EQU,_0,_TO,_4,_NL,
+	// 280 LET R(5-I)=R(4-I)
+	LINE(280),_LET,_R,_LPAR,_5,_SUB,_I,_RPAR,_EQU,_R,_LPAR,_4,_SUB,_I,_RPAR,_NL,
+	// 290 NEXT I
+	LINE(290),_NEXT,_I,_NL,
+	// 300 LET R(0)=X
+	LINE(300),_LET,_R,_LPAR,_0,_RPAR,_EQU,_X,_NL,
+	// 310 GOTO 50
+	LINE(310),_GOTO,_5,_0,_NL,
+	// 320 LET C=CODE(A$)
+	LINE(320),_LET,_C,_EQU,_C,_O,_D,_E,_LPAR,_A,_DOLLAR,_RPAR,_NL,
+	// 330 IF C<28 OR C>37 THEN GOTO 370
+	LINE(330),_IF,_C,_LT,_2,_8,_OR,_C,_GR,_3,_7,_THEN,_GOTO,_3,_7,_0,_NL,
+	// 340 GOSUB 590
+	LINE(340),_GOSUB,_5,_9,_0,_NL,
+	// 350 LET X=-X
+	LINE(350),_LET,_X,_EQU,_SUB,_X,_NL,
+	// 360 GOTO 270
+	LINE(360),_GOTO,_2,_7,_0,_NL,
+	// 370 LET R(0)=R(1)-R(0)
+	LINE(370),_LET,_R,_LPAR,_0,_RPAR,_EQU,_R,_LPAR,_1,_RPAR,_SUB,_R,_LPAR,_0,_RPAR,_NL,
+	// 380 FOR I=1 TO 4
+	LINE(380),_FOR,_I,_EQU,_1,_TO,_4,_NL,
+	// 390 LET R(I)=R(I+1)
+	LINE(390),_LET,_R,_LPAR,_I,_RPAR,_EQU,_R,_LPAR,_I,_ADD,_1,_RPAR,_NL,
+	// 400 NEXT I
+	LINE(400),_NEXT,_I,_NL,
+	// 410 LET R(5)=0
+	LINE(410),_LET,_R,_LPAR,_5,_RPAR,_EQU,_0,_NL,
+	// 420 GOTO 50
+	LINE(420),_GOTO,_5,_0,_NL,
+	// 430 LET C=CODE(A$)
+	LINE(430),_LET,_C,_EQU,_C,_O,_D,_E,_LPAR,_A,_DOLLAR,_RPAR,_NL,
+	// 440 IF C<28 OR C>37 THEN GOTO 470
+	LINE(440),_IF,_C,_LT,_2,_8,_OR,_C,_GR,_3,_7,_THEN,_GOTO,_4,_7,_0,_NL,
+	// 450 GOSUB 590
+	LINE(450),_GOSUB,_5,_9,_0,_NL,
+	// 460 GOTO 270
+	LINE(460),_GOTO,_2,_7,_0,_NL,
+	// 470 LET R(0)=R(1)+R(0)
+	LINE(470),_LET,_R,_LPAR,_0,_RPAR,_EQU,_R,_LPAR,_1,_RPAR,_ADD,_R,_LPAR,_0,_RPAR,_NL,
+	// 480 GOTO 380
+	LINE(480),_GOTO,_3,_8,_0,_NL,
+	// 490 LET R(0)=R(1)*R(0)
+	LINE(490),_LET,_R,_LPAR,_0,_RPAR,_EQU,_R,_LPAR,_1,_RPAR,_MUL,_R,_LPAR,_0,_RPAR,_NL,
+	// 500 GOTO 380
+	LINE(500),_GOTO,_3,_8,_0,_NL,
+	// 510 LET R(0)=R(1)/R(0)
+	LINE(510),_LET,_R,_LPAR,_0,_RPAR,_EQU,_R,_LPAR,_1,_RPAR,_DIV,_R,_LPAR,_0,_RPAR,_NL,
+	// 520 GOTO 380
+	LINE(520),_GOTO,_3,_8,_0,_NL,
+	// 530 LET R(0)=R(1)**R(0)
+	LINE(530),_LET,_R,_LPAR,_0,_RPAR,_EQU,_R,_LPAR,_1,_RPAR,_PWR,_R,_LPAR,_0,_RPAR,_NL,
+	// 540 GOTO 380
+	LINE(540),_GOTO,_3,_8,_0,_NL,
+	// 550 LET X=R(0)
+	LINE(550),_LET,_X,_EQU,_R,_LPAR,_0,_RPAR,_NL,
+	// 560 LET R(0)=R(1)
+	LINE(560),_LET,_R,_LPAR,_0,_RPAR,_EQU,_R,_LPAR,_1,_RPAR,_NL,
+	// 570 LET R(1)=X
+	LINE(570),_LET,_R,_LPAR,_1,_RPAR,_EQU,_X,_NL,
+	// 580 GOTO 50
+	LINE(580),_GOTO,_5,_0,_NL,
+	// 590 LET C=CODE(A$)
+	LINE(590),_LET,_C,_EQU,_C,_O,_D,_E,_LPAR,_A,_DOLLAR,_RPAR,_NL,
+	// 600 IF C<28 OR C>37 THEN RETURN
+	LINE(600),_IF,_C,_LT,_2,_8,_OR,_C,_GR,_3,_7,_THEN,_RETURN,_NL,
+	// 610 LET A$=TL$(A$)
+	LINE(610),_LET,_A,_DOLLAR,_EQU,_T,_L,_DOLLAR,_LPAR,_A,_DOLLAR,_RPAR,_NL,
+	// 620 LET X=X*10+C-28
+	LINE(620),_LET,_X,_EQU,_X,_MUL,_1,_0,_ADD,_C,_SUB,_2,_8,_NL,
+	// 630 GOTO 590
+	LINE(630),_GOTO,_5,_9,_0,_NL,
+
+// -------------------------------------------
+// HEX MANDELBROT (285 B)
+// To use: LOAD 11, RUN 700
+
+	// 710 REM
+	LINE(710),_REM,_NL,
+	// 720 REM HEX MANDELBROT
+	LINE(720),_REM,_H,_E,_X,_SPC,_M,_A,_N,_D,_E,_L,_B,_R,_O,_T,_NL,
+	// 730 REM
+	LINE(730),_REM,_NL,
+	// 740 LET S=1024
+	LINE(740),_LET,_S,_EQU,_1,_0,_2,_4,_NL,
+	// 750 LET U=100
+	LINE(750),_LET,_U,_EQU,_1,_0,_0,_NL,
+	// 760 LET V=85
+	LINE(760),_LET,_V,_EQU,_8,_5,_NL,
+	// 770 LET H=4*S
+	LINE(770),_LET,_H,_EQU,_4,_MUL,_S,_NL,
+	// 780 FOR Y=-11 TO 12
+	LINE(780),_FOR,_Y,_EQU,_SUB,_1,_1,_TO,_1,_2,_NL,
+	// 790 LET D=Y*V
+	LINE(790),_LET,_D,_EQU,_Y,_MUL,_V,_NL,
+	// 800 FOR X=-20 TO 11
+	LINE(800),_FOR,_X,_EQU,_SUB,_2,_0,_TO,_1,_1,_NL,
+	// 810 LET C=X*U
+	LINE(810),_LET,_C,_EQU,_X,_MUL,_U,_NL,
+	// 820 LET A=C
+	LINE(820),_LET,_A,_EQU,_C,_NL,
+	// 830 LET B=D
+	LINE(830),_LET,_B,_EQU,_D,_NL,
+	// 840 FOR I=0 TO 15
+	LINE(840),_FOR,_I,_EQU,_0,_TO,_1,_5,_NL,
+	// 850 LET E=A*A/S
+	LINE(850),_LET,_E,_EQU,_A,_MUL,_A,_DIV,_S,_NL,
+	// 860 LET F=B*B/S
+	LINE(860),_LET,_F,_EQU,_B,_MUL,_B,_DIV,_S,_NL,
+	// 870 LET T=E-F+C
+	LINE(870),_LET,_T,_EQU,_E,_SUB,_F,_ADD,_C,_NL,
+	// 880 LET G=A*B/S
+	LINE(880),_LET,_G,_EQU,_A,_MUL,_B,_DIV,_S,_NL,
+	// 890 LET B=G+G+D
+	LINE(890),_LET,_B,_EQU,_G,_ADD,_G,_ADD,_D,_NL,
+	// 900 LET A=T
+	LINE(900),_LET,_A,_EQU,_T,_NL,
+	// 910 IF (A*A/S+B*B/S)>H THEN GOTO 950
+	LINE(910),_IF,_LPAR,_A,_MUL,_A,_DIV,_S,_ADD,_B,_MUL,_B,_DIV,_S,_RPAR,_GR,_H,_THEN,_GOTO,_9,_5,_0,_NL,
+	// 920 NEXT I
+	LINE(920),_NEXT,_I,_NL,
+	// 930 PRINT " ";
+	LINE(930),_PRINT,_QUOT,_SPC,_QUOT,_SEMI,_NL,
+	// 940 GOTO 960
+	LINE(940),_GOTO,_9,_6,_0,_NL,
+	// 950 PRINT CHR$(28+I);
+	LINE(950),_PRINT,_C,_H,_R,_DOLLAR,_LPAR,_2,_8,_ADD,_I,_RPAR,_SEMI,_NL,
+	// 960 NEXT X
+	LINE(960),_NEXT,_X,_NL,
+	// 970 PRINT
+	LINE(970),_PRINT,_NL,
+	// 980 NEXT Y
+	LINE(980),_NEXT,_Y,_NL,
+	// 990 IF INKEY$="" THEN GOTO 990
+	LINE(990),_IF,_I,_N,_K,_E,_Y,_DOLLAR,_EQU,_QUOT,_QUOT,_THEN,_GOTO,_9,_9,_0,_NL,
+	// 1000 STOP
+	LINE(1000),_STOP,_NL,
+
+	// stop mark (2 B)
+	0,0
+},
+
+// ==== Slot 12 (924 B, free 100)
+
+{
+// FLAPPYS SONG (922 B)
+// To use: LOAD 12, RUN
+
+	// 10 REM
+	LINE(10),_REM,_NL,
+	// 20 REM FLAPPYS SONG
+	LINE(20),_REM,_F,_L,_A,_P,_P,_Y,_S,_SPC,_S,_O,_N,_G,_NL,
+	// 30 REM
+	LINE(30),_REM,_NL,
+	// 40 PRINT "PLAYING FLAPPYS SONG..."
+	LINE(40),_PRINT,_QUOT,_P,_L,_A,_Y,_I,_N,_G,_SPC,_F,_L,_A,_P,_P,_Y,_S,_SPC,_S,_O,_N,_G,_DOT,_DOT,_DOT,_QUOT,_NL,
+	// 50 LET G4=39200
+	LINE(50),_LET,_G,_4,_EQU,_3,_9,_2,_0,_0,_NL,
+	// 60 LET B4=49388
+	LINE(60),_LET,_B,_4,_EQU,_4,_9,_3,_8,_8,_NL,
+	// 70 LET C5=52325
+	LINE(70),_LET,_C,_5,_EQU,_5,_2,_3,_2,_5,_NL,
+	// 80 LET D5=58733
+	LINE(80),_LET,_D,_5,_EQU,_5,_8,_7,_3,_3,_NL,
+	// 90 LET E5=65926
+	LINE(90),_LET,_E,_5,_EQU,_6,_5,_9,_2,_6,_NL,
+	// 100 LET F5=69846
+	LINE(100),_LET,_F,_5,_EQU,_6,_9,_8,_4,_6,_NL,
+	// 110 LET FS5=73999
+	LINE(110),_LET,_F,_S,_5,_EQU,_7,_3,_9,_9,_9,_NL,
+	// 120 LET G5=78399
+	LINE(120),_LET,_G,_5,_EQU,_7,_8,_3,_9,_9,_NL,
+	// 130 LET A5=88000
+	LINE(130),_LET,_A,_5,_EQU,_8,_8,_0,_0,_0,_NL,
+	// 140 LET B5=98777
+	LINE(140),_LET,_B,_5,_EQU,_9,_8,_7,_7,_7,_NL,
+	// 150 LET C6=104650
+	LINE(150),_LET,_C,_6,_EQU,_1,_0,_4,_6,_5,_0,_NL,
+	// 160 LET D6=117466
+	LINE(160),_LET,_D,_6,_EQU,_1,_1,_7,_4,_6,_6,_NL,
+	// 170 LET R=0
+	LINE(170),_LET,_R,_EQU,_0,_NL,
+	// 180 LET L2=533
+	LINE(180),_LET,_L,_2,_EQU,_5,_3,_3,_NL,
+	// 190 LET L2D=800
+	LINE(190),_LET,_L,_2,_D,_EQU,_8,_0,_0,_NL,
+	// 200 LET L4=267
+	LINE(200),_LET,_L,_4,_EQU,_2,_6,_7,_NL,
+	// 210 LET L4D=400
+	LINE(210),_LET,_L,_4,_D,_EQU,_4,_0,_0,_NL,
+	// 220 LET L8=133
+	LINE(220),_LET,_L,_8,_EQU,_1,_3,_3,_NL,
+	// 230 LET N=READ
+	LINE(230),_LET,_N,_EQU,_R,_E,_A,_D,_NL,
+	// 240 LET L=READ
+	LINE(240),_LET,_L,_EQU,_R,_E,_A,_D,_NL,
+	// 250 BEEP N,L
+	LINE(250),_BEEP,_N,_COMMA,_L,_NL,
+	// 260 GOTO 230
+	LINE(260),_GOTO,_2,_3,_0,_NL,
+	// 270 DATA R,L2,E5,L8,R,L8,C5,L4
+	LINE(270),_DATA,_R,_COMMA,_L,_2,_COMMA,_E,_5,_COMMA,_L,_8,_COMMA,_R,_COMMA,_L,_8,_COMMA,_C,_5,_COMMA,_L,_4,_NL,
+	// 280 DATA R,L4,E5,L8,R,L8,C5,L4
+	LINE(280),_DATA,_R,_COMMA,_L,_4,_COMMA,_E,_5,_COMMA,_L,_8,_COMMA,_R,_COMMA,_L,_8,_COMMA,_C,_5,_COMMA,_L,_4,_NL,
+	// 290 DATA R,L4,E5,L8,R,L8,G5,L8
+	LINE(290),_DATA,_R,_COMMA,_L,_4,_COMMA,_E,_5,_COMMA,_L,_8,_COMMA,_R,_COMMA,_L,_8,_COMMA,_G,_5,_COMMA,_L,_8,_NL,
+	// 300 DATA R,L8,G5,L8,E5,L8,C5,L8
+	LINE(300),_DATA,_R,_COMMA,_L,_8,_COMMA,_G,_5,_COMMA,_L,_8,_COMMA,_E,_5,_COMMA,_L,_8,_COMMA,_C,_5,_COMMA,_L,_8,_NL,
+	// 310 DATA E5,L8,D5,L4D,R,L8,F5,L8
+	LINE(310),_DATA,_E,_5,_COMMA,_L,_8,_COMMA,_D,_5,_COMMA,_L,_4,_D,_COMMA,_R,_COMMA,_L,_8,_COMMA,_F,_5,_COMMA,_L,_8,_NL,
+	// 320 DATA R,L8,B4,L4,R,L4,D5,L8
+	LINE(320),_DATA,_R,_COMMA,_L,_8,_COMMA,_B,_4,_COMMA,_L,_4,_COMMA,_R,_COMMA,_L,_4,_COMMA,_D,_5,_COMMA,_L,_8,_NL,
+	// 330 DATA R,L8,G4,L4,R,L4,D5,L8
+	LINE(330),_DATA,_R,_COMMA,_L,_8,_COMMA,_G,_4,_COMMA,_L,_4,_COMMA,_R,_COMMA,_L,_4,_COMMA,_D,_5,_COMMA,_L,_8,_NL,
+	// 340 DATA R,L8,F5,L8,R,L8,F5,L8
+	LINE(340),_DATA,_R,_COMMA,_L,_8,_COMMA,_F,_5,_COMMA,_L,_8,_COMMA,_R,_COMMA,_L,_8,_COMMA,_F,_5,_COMMA,_L,_8,_NL,
+	// 350 DATA D5,L8,B4,L8,D5,L8,C5,L4D
+	LINE(350),_DATA,_D,_5,_COMMA,_L,_8,_COMMA,_B,_4,_COMMA,_L,_8,_COMMA,_D,_5,_COMMA,_L,_8,_COMMA,_C,_5,_COMMA,_L,_4,_D,_NL,
+	// 360 DATA R,L4D,A5,L2D,R,L4,F5,L8
+	LINE(360),_DATA,_R,_COMMA,_L,_4,_D,_COMMA,_A,_5,_COMMA,_L,_2,_D,_COMMA,_R,_COMMA,_L,_4,_COMMA,_F,_5,_COMMA,_L,_8,_NL,
+	// 370 DATA R,L8,F5,L8,R,L8,R,L8
+	LINE(370),_DATA,_R,_COMMA,_L,_8,_COMMA,_F,_5,_COMMA,_L,_8,_COMMA,_R,_COMMA,_L,_8,_COMMA,_R,_COMMA,_L,_8,_NL,
+	// 380 DATA A5,L8,F5,L8,A5,L8,F5,L8
+	LINE(380),_DATA,_A,_5,_COMMA,_L,_8,_COMMA,_F,_5,_COMMA,_L,_8,_COMMA,_A,_5,_COMMA,_L,_8,_COMMA,_F,_5,_COMMA,_L,_8,_NL,
+	// 390 DATA A5,L8,D6,L8,C6,L8,B5,L8
+	LINE(390),_DATA,_A,_5,_COMMA,_L,_8,_COMMA,_D,_6,_COMMA,_L,_8,_COMMA,_C,_6,_COMMA,_L,_8,_COMMA,_B,_5,_COMMA,_L,_8,_NL,
+	// 400 DATA D6,L8,C6,L8,A5,L8,G5,L4
+	LINE(400),_DATA,_D,_6,_COMMA,_L,_8,_COMMA,_C,_6,_COMMA,_L,_8,_COMMA,_A,_5,_COMMA,_L,_8,_COMMA,_G,_5,_COMMA,_L,_4,_NL,
+	// 410 DATA E5,L4,C5,L4,R,L4,E5,L4
+	LINE(410),_DATA,_E,_5,_COMMA,_L,_4,_COMMA,_C,_5,_COMMA,_L,_4,_COMMA,_R,_COMMA,_L,_4,_COMMA,_E,_5,_COMMA,_L,_4,_NL,
+	// 420 DATA C5,L4,R,L4,E5,L4,C5,L4
+	LINE(420),_DATA,_C,_5,_COMMA,_L,_4,_COMMA,_R,_COMMA,_L,_4,_COMMA,_E,_5,_COMMA,_L,_4,_COMMA,_C,_5,_COMMA,_L,_4,_NL,
+	// 430 DATA G5,L8,FS5,L8,A5,L8,G5,L8
+	LINE(430),_DATA,_G,_5,_COMMA,_L,_8,_COMMA,_F,_S,_5,_COMMA,_L,_8,_COMMA,_A,_5,_COMMA,_L,_8,_COMMA,_G,_5,_COMMA,_L,_8,_NL,
+	// 440 DATA F5,L8,E5,L8,D5,L4,B4,L8
+	LINE(440),_DATA,_F,_5,_COMMA,_L,_8,_COMMA,_E,_5,_COMMA,_L,_8,_COMMA,_D,_5,_COMMA,_L,_4,_COMMA,_B,_4,_COMMA,_L,_8,_NL,
+	// 450 DATA G5,L8,F5,L4,D5,L4,B4,L8
+	LINE(450),_DATA,_G,_5,_COMMA,_L,_8,_COMMA,_F,_5,_COMMA,_L,_4,_COMMA,_D,_5,_COMMA,_L,_4,_COMMA,_B,_4,_COMMA,_L,_8,_NL,
+	// 460 DATA G5,L8,F5,L4,D5,L4,B4,L8
+	LINE(460),_DATA,_G,_5,_COMMA,_L,_8,_COMMA,_F,_5,_COMMA,_L,_4,_COMMA,_D,_5,_COMMA,_L,_4,_COMMA,_B,_4,_COMMA,_L,_8,_NL,
+	// 470 DATA G5,L8,F5,L4,B5,L8,A5,L8
+	LINE(470),_DATA,_G,_5,_COMMA,_L,_8,_COMMA,_F,_5,_COMMA,_L,_4,_COMMA,_B,_5,_COMMA,_L,_8,_COMMA,_A,_5,_COMMA,_L,_8,_NL,
+	// 480 DATA G5,L8,F5,L8,E5,L8,D5,L8
+	LINE(480),_DATA,_G,_5,_COMMA,_L,_8,_COMMA,_F,_5,_COMMA,_L,_8,_COMMA,_E,_5,_COMMA,_L,_8,_COMMA,_D,_5,_COMMA,_L,_8,_NL,
+	// 490 DATA C5,L4,R,L4,B4,L4,C5,L4
+	LINE(490),_DATA,_C,_5,_COMMA,_L,_4,_COMMA,_R,_COMMA,_L,_4,_COMMA,_B,_4,_COMMA,_L,_4,_COMMA,_C,_5,_COMMA,_L,_4,_NL,
+	// 500 DATA R,L4,B4,L4,C5,L4,R,L2
+	LINE(500),_DATA,_R,_COMMA,_L,_4,_COMMA,_B,_4,_COMMA,_L,_4,_COMMA,_C,_5,_COMMA,_L,_4,_COMMA,_R,_COMMA,_L,_2,_NL,
+
+	// stop mark (2 B)
+	0,0
+},
+
+};
+
+// ==== Slot13 - uses remaining free Flash space 512 B (501 B, free 11 B)
+
+__attribute__((section(".flashminislot"))) __attribute__((aligned(256))) const u8 Slot13[SLOT13NUM] = {
+
+// MATCHES (499 B)
+// To use: LOAD 13, RUN
+// "\letter" means: press SHIFT and letter
+
+	// 10 REM
+	LINE(10),_REM,_NL,
+	// 20 REM MATCHES
+	LINE(20),_REM,_M,_A,_T,_C,_H,_E,_S,_NL,
+	// 30 REM
+	LINE(30),_REM,_NL,
+	// 40 RANDOMISE
+	LINE(40),_RANDOM,_NL,
+	// 50 LET M=18+RND(12)
+	LINE(50),_LET,_M,_EQU,_1,_8,_ADD,_R,_N,_D,_LPAR,_1,_2,_RPAR,_NL,
+	// 60 PRINT "WHO TAKES LAST ONE LOSES."
+	LINE(60),_PRINT,_QUOT,_W,_H,_O,_SPC,_T,_A,_K,_E,_S,_SPC,_L,_A,_S,_T,_SPC,
+		_O,_N,_E,_SPC,_L,_O,_S,_E,_S,_DOT,_QUOT,_NL,
+	// 70 PRINT
+	LINE(70),_PRINT,_NL,
+	// 80 FOR L=1 TO 4
+	LINE(80),_FOR,_L,_EQU,_1,_TO,_4,_NL,
+	// 90 FOR K=1 TO M
+	LINE(90),_FOR,_K,_EQU,_1,_TO,_M,_NL,
+	// 100 IF L=1 THEN PRINT "\E";
+	LINE(100),_IF,_L,_EQU,_1,_THEN,_PRINT,_QUOT,_0010,_QUOT,_SEMI,_NL,
+	// 110 IF L>1 THEN PRINT "\Q";
+	LINE(110),_IF,_L,_GR,_1,_THEN,_PRINT,_QUOT,_1010,_QUOT,_SEMI,_NL,
+	// 120 NEXT K
+	LINE(120),_NEXT,_K,_NL,
+	// 130 PRINT
+	LINE(130),_PRINT,_NL,
+	// 140 NEXT L
+	LINE(140),_NEXT,_L,_NL,
+	// 150 PRINT
+	LINE(150),_PRINT,_NL,
+	// 160 PRINT M;" MATCHES, YOUR TURN"
+	LINE(160),_PRINT,_M,_SEMI,_QUOT,_SPC,_M,_A,_T,_C,_H,_E,_S,_COMMA,_SPC,
+		_Y,_O,_U,_R,_SPC,_T,_U,_R,_N,_QUOT,_NL,
+	// 170 IF M=1 THEN GOTO 380
+	LINE(170),_IF,_M,_EQU,_1,_THEN,_GOTO,_3,_8,_0,_NL,
+	// 180 PRINT "HOW MUCH? (1-3, 0=QUIT)"
+	LINE(180),_PRINT,_QUOT,_H,_O,_W,_SPC,_M,_U,_C,_H,_QUERY,_SPC,_LPAR,_1,_SUB,_3,
+		_COMMA,_SPC,_0,_EQU,_Q,_U,_I,_T,_RPAR,_QUOT,_NL,
+	// 190 INPUT T
+	LINE(190),_INPUT,_T,_NL,
+	// 200 IF T=M THEN GOTO 380
+	LINE(200),_IF,_T,_EQU,_M,_THEN,_GOTO,_3,_8,_0,_NL,
+	// 210 IF T<1 THEN STOP
+	LINE(210),_IF,_T,_LT,_1,_THEN,_STOP,_NL,
+	// 220 IF T>3 OR T>M THEN GOTO 190
+	LINE(220),_IF,_T,_GR,_3,_OR,_T,_GR,_M,_THEN,_GOTO,_1,_9,_0,_NL,
+	// 230 LET M=M-T
+	LINE(230),_LET,_M,_EQU,_M,_SUB,_T,_NL,
+	// 240 IF M=1 THEN GOTO 360
+	LINE(240),_IF,_M,_EQU,_1,_THEN,_GOTO,_3,_6,_0,_NL,
+	// 250 LET C=RND(3)
+	LINE(250),_LET,_C,_EQU,_R,_N,_D,_LPAR,_3,_RPAR,_NL,
+	// 260 IF RND(6)=1 THEN GOTO 290
+	LINE(260),_IF,_R,_N,_D,_LPAR,_6,_RPAR,_EQU,_1,_THEN,_GOTO,_2,_9,_0,_NL,
+	// 270 LET R=M-4*(M/4)
+	LINE(270),_LET,_R,_EQU,_M,_SUB,_4,_MUL,_LPAR,_M,_DIV,_4,_RPAR,_NL,
+	// 280 IF NOT R=1 THEN LET C=R+3-4*((R+3)/4)
+	LINE(280),_IF,_NOT,_R,_EQU,_1,_THEN,_LET,_C,_EQU,_R,_ADD,_3,_SUB,
+		_4,_MUL,_LPAR,_LPAR,_R,_ADD,_3,_RPAR,_DIV,_4,_RPAR,_NL,
+	// 290 IF C>M THEN LET C=M
+	LINE(290),_IF,_C,_GR,_M,_THEN,_LET,_C,_EQU,_M,_NL,
+	// 300 LET M=M-C
+	LINE(300),_LET,_M,_EQU,_M,_SUB,_C,_NL,
+	// 310 IF M=0 THEN GOTO 360
+	LINE(310),_IF,_M,_EQU,_0,_THEN,_GOTO,_3,_6,_0,_NL,
+	// 320 CLS
+	LINE(320),_CLS,_NL,
+	// 330 PRINT "YOU TOOK ";T
+	LINE(330),_PRINT,_QUOT,_Y,_O,_U,_SPC,_T,_O,_O,_K,_SPC,_QUOT,_SEMI,_T,_NL,
+	// 340 PRINT "I TOOK ";C
+	LINE(340),_PRINT,_QUOT,_I,_SPC,_T,_O,_O,_K,_SPC,_QUOT,_SEMI,_C,_NL,
+	// 350 GOTO 70
+	LINE(350),_GOTO,_7,_0,_NL,
+	// 360 PRINT "YOU WON"
+	LINE(360),_PRINT,_QUOT,_Y,_O,_U,_SPC,_W,_O,_N,_QUOT,_NL,
+	// 370 GOTO 390
+	LINE(370),_GOTO,_3,_9,_0,_NL,
+	// 380 PRINT "I WON"
+	LINE(380),_PRINT,_QUOT,_I,_SPC,_W,_O,_N,_QUOT,_NL,
+	// 390 PRINT "PLAY AGAIN? (Y)"
+	LINE(390),_PRINT,_QUOT,_P,_L,_A,_Y,_SPC,_A,_G,_A,_I,_N,_QUERY,_SPC,_LPAR,_Y,_RPAR,_QUOT,_NL,
+	// 400 INPUT A$
+	LINE(400),_INPUT,_A,_DOLLAR,_NL,
+	// 410 IF NOT CODE(A$)=62 THEN STOP
+	LINE(410),_IF,_NOT,_C,_O,_D,_E,_LPAR,_A,_DOLLAR,_RPAR,_EQU,_6,_2,_THEN,_STOP,_NL,
+	// 420 CLS
+	LINE(420),_CLS,_NL,
+	// 430 GOTO 50
+	LINE(430),_GOTO,_5,_0,_NL,
+
+	// stop mark (2 B)
+	0,0
+};

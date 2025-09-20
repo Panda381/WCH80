@@ -1,0 +1,9 @@
+#include "../include.h"
+
+// format: 1-bit pixel graphics
+// image width: 8 pixels
+// image height: 8 lines
+// image pitch: 1 bytes
+const u8 ImgTileCell[8] = {
+	0x55, 0xFF, 0x67, 0xC3, 0x43, 0xE7, 0x7F, 0xFF, 
+};
